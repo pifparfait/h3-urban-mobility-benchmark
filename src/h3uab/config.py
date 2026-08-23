@@ -25,11 +25,19 @@ class H3Config:
             self.accessibility_res,
             self.amenity_index_res,
         )
+
         if tuple(sorted(semantic)) != semantic:
-            raise ValueError("Semantic H3 resolutions must be increasing.")
-        if self.interaction_res != 11 or self.position_res != 12:
             raise ValueError(
-                "H11/H12 are frozen as localization/visualization layers."
+                "Semantic H3 resolutions must be increasing."
+            )
+
+        if (
+            self.interaction_res != 11
+            or self.position_res != 12
+        ):
+            raise ValueError(
+                "H11/H12 are frozen as "
+                "localization/visualization layers."
             )
 
 
@@ -42,14 +50,32 @@ class RoutingConfig:
     route_weight: str = "length"
     walking_speed_m_s: float = 1.4
 
-    graphml_path: Path = Path("data/cache/madrid_walk_graph.graphml")
-    h3_index_path: Path = Path("data/cache/madrid_walk_graph_h3_index.pkl")
-    routing_matrix_dir: Path = Path("data/cache/routing_matrix")
-    routing_matrix_distance_file: str = "distance_matrix.float32.dat"
-    routing_matrix_nodes_file: str = "destination_node_ids.npy"
-    routing_matrix_poi_index_file: str = "poi_to_matrix_index.npy"
-    routing_matrix_metadata_file: str = "metadata.json"
-    routing_matrix_next_hop_file: str = "next_hop.int32.dat"
+    graphml_path: Path = Path(
+        "data/cache/madrid_walk_graph.graphml"
+    )
+    h3_index_path: Path = Path(
+        "data/cache/madrid_walk_graph_h3_index.pkl"
+    )
+    routing_matrix_dir: Path = Path(
+        "data/cache/routing_matrix"
+    )
+
+    routing_matrix_distance_file: str = (
+        "distance_matrix.float32.dat"
+    )
+    routing_matrix_nodes_file: str = (
+        "destination_node_ids.npy"
+    )
+    routing_matrix_poi_index_file: str = (
+        "poi_to_matrix_index.npy"
+    )
+    routing_matrix_metadata_file: str = (
+        "metadata.json"
+    )
+    routing_matrix_next_hop_file: str = (
+        "next_hop.int32.dat"
+    )
+
     routing_matrix_batch_size: int = 32
     route_cache_max_entries: int = 250_000
     edge_h11_sample_spacing_m: float = 15.0
@@ -77,6 +103,9 @@ class BaselineConfig:
 
 @dataclass(frozen=True)
 class Config:
+    # Default remains Madrid for complete backward compatibility.
+    city_name: str = "madrid"
+
     seed: int = 42
 
     lat_min: float = 40.38
@@ -92,20 +121,42 @@ class Config:
     beta_distance: float = 0.001
     gamma_attractiveness: float = 0.75
 
-    # Existing validated Madrid assets are linked/copied here by scripts/link_data.py
-    osm_cache_csv: Path = Path("data/processed/madrid_osm_pois.csv")
-    population_h3_csv: Path = Path("data/processed/madrid_population_h3_r9.csv")
+    # Madrid defaults. Other cities are supplied via city_config.config_for_city().
+    osm_cache_csv: Path = Path(
+        "data/processed/madrid_osm_pois.csv"
+    )
+    population_h3_csv: Path = Path(
+        "data/processed/madrid_population_h3_r9.csv"
+    )
     population_h3_id_col: str = "h3_id"
     population_col: str = "population"
-    static_city_cache: Path = Path("data/cache/madrid_static_city_h3.pkl")
+
+    static_city_cache: Path = Path(
+        "data/cache/madrid_static_city_h3.pkl"
+    )
     rebuild_static_city: bool = False
 
+    # Generic names used by multi-city configuration.
+    worldpop_country_tif: Path = Path(
+        "data/raw/worldpop/"
+        "esp_ppp_2020_UNadj_constrained.tif"
+    )
+    worldpop_city_tif: Path = Path(
+        "data/processed/worldpop/"
+        "madrid_worldpop_2020.tif"
+    )
+
+    # Backward-compatible Madrid aliases retained because older scripts may
+    # still refer to these exact attribute names.
     worldpop_spain_tif: Path = Path(
-        "data/raw/worldpop/esp_ppp_2020_UNadj_constrained.tif"
+        "data/raw/worldpop/"
+        "esp_ppp_2020_UNadj_constrained.tif"
     )
     worldpop_madrid_tif: Path = Path(
-        "data/processed/worldpop/madrid_worldpop_2020.tif"
+        "data/processed/worldpop/"
+        "madrid_worldpop_2020.tif"
     )
+
     worldpop_url: str = (
         "https://data.worldpop.org/GIS/Population/"
         "Global_2000_2020_Constrained/2020/BSGM/ESP/"
@@ -115,9 +166,18 @@ class Config:
     relative_error_floor_absolute: float = 1e-6
     relative_error_floor_fraction_of_positive_median: float = 0.01
 
-    h3: H3Config = field(default_factory=H3Config)
-    routing: RoutingConfig = field(default_factory=RoutingConfig)
+    h3: H3Config = field(
+        default_factory=H3Config
+    )
+
+    routing: RoutingConfig = field(
+        default_factory=RoutingConfig
+    )
+
     destination_refinement: DestinationRefinementConfig = field(
         default_factory=DestinationRefinementConfig
     )
-    baseline: BaselineConfig = field(default_factory=BaselineConfig)
+
+    baseline: BaselineConfig = field(
+        default_factory=BaselineConfig
+    )

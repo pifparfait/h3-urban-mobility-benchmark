@@ -14,7 +14,9 @@ def build_world(cfg):
         cfg.seed
     )
 
-    pois = load_osm_pois(cfg)
+    pois = load_osm_pois(
+        cfg
+    )
 
     if pois.empty:
         raise RuntimeError(
@@ -39,6 +41,7 @@ def build_world(cfg):
     )
 
     # Compact synthetic behavioral profiles.
+    # Identical profile-generation mechanism for every city.
     agent_profile_type = sample_profiles(
         cfg.n_agents,
         rng,
@@ -64,18 +67,23 @@ def build_world(cfg):
         amenity_lat=pois[
             "lat"
         ].to_numpy(float),
+
         amenity_lng=pois[
             "lng"
         ].to_numpy(float),
+
         amenity_layer_code=pois[
             "layer_code"
         ].astype(str).to_numpy(),
+
         amenity_attractiveness=pois[
             "attractiveness"
         ].to_numpy(float),
+
         amenity_osm_id=pois[
             "osm_id"
         ].astype(str).to_numpy(),
+
         amenity_name=pois[
             "name"
         ].fillna("").astype(str).to_numpy(),
@@ -90,10 +98,27 @@ def build_world(cfg):
 
     metadata = {
         **population_metadata,
+
+        "city_name":
+            str(
+                getattr(
+                    cfg,
+                    "city_name",
+                    "madrid",
+                )
+            ),
+
         "n_real_osm_pois":
-            int(len(pois)),
+            int(
+                len(
+                    pois
+                )
+            ),
+
         "active_layer_codes":
-            list(active_layer_codes),
+            list(
+                active_layer_codes
+            ),
 
         "behavior_model":
             "controlled_synthetic_profiles_and_schedules",

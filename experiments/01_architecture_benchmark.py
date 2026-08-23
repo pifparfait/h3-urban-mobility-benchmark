@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import argparse
-from dataclasses import replace
 from pathlib import Path
 import sys
 
@@ -11,7 +10,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from h3uab.config import Config
+from h3uab.city_config import config_for_city
 from h3uab.world import build_world
 from h3uab.continuous_indexed_backend import ContinuousIndexedBackend
 from h3uab.h3_backend import MultiLayerH3Backend
@@ -29,13 +28,14 @@ from h3uab.benchmarking import (
 
 def run_one_case(
     *,
+    city: str,
     n_agents: int,
     n_queries: int,
     repeats: int,
     output_dir: Path,
 ):
-    cfg = replace(
-        Config(),
+    cfg = config_for_city(
+        city,
         n_agents=int(n_agents),
     )
 
@@ -45,6 +45,7 @@ def run_one_case(
     print("=" * 108)
     print(
         f"01 — ARCHITECTURE BENCHMARK | "
+        f"city={cfg.city_name} | "
         f"agents={n_agents:,} | queries={n_queries:,} | repeats={repeats}"
     )
     print("=" * 108)
@@ -139,32 +140,42 @@ def run_one_case(
     # ------------------------------------------------------------------
     raw.insert(
         0,
+        "city",
+        str(cfg.city_name),
+    )
+    raw.insert(
+        1,
         "n_agents",
         int(n_agents),
     )
     raw.insert(
-        1,
+        2,
         "n_queries_requested",
         int(n_queries),
     )
     raw.insert(
-        2,
+        3,
         "repeats",
         int(repeats),
     )
 
     summary.insert(
         0,
+        "city",
+        str(cfg.city_name),
+    )
+    summary.insert(
+        1,
         "n_agents",
         int(n_agents),
     )
     summary.insert(
-        1,
+        2,
         "n_queries_requested",
         int(n_queries),
     )
     summary.insert(
-        2,
+        3,
         "repeats",
         int(repeats),
     )
@@ -293,6 +304,20 @@ def main():
     )
 
     parser.add_argument(
+        "--city",
+        type=str,
+        default="madrid",
+        choices=[
+            "madrid",
+            "cambridge_ma",
+        ],
+        help=(
+            "City configuration. Madrid remains the default; "
+            "Cambridge results are stored separately."
+        ),
+    )
+
+    parser.add_argument(
         "--agents",
         nargs="+",
         type=int,
@@ -339,6 +364,13 @@ def main():
         ROOT
         / "outputs"
         / "architecture"
+        if args.city == "madrid"
+        else (
+            ROOT
+            / "outputs"
+            / args.city
+            / "architecture"
+        )
     )
 
     output_dir.mkdir(
@@ -358,6 +390,9 @@ def main():
         "ARCHITECTURE BENCHMARK — CHECKPOINTED BATCH SWEEP"
     )
     print("=" * 108)
+    print(
+        f"City       : {args.city}"
+    )
     print(
         "Populations:",
         " -> ".join(
@@ -408,6 +443,7 @@ def main():
             continue
 
         run_one_case(
+            city=args.city,
             n_agents=n_agents,
             n_queries=n_queries,
             repeats=int(
@@ -434,6 +470,10 @@ def main():
     print(
         f"Per-N and aggregate outputs: {output_dir}"
     )
+    if args.city != "madrid":
+        print(
+            "Madrid architecture outputs were not modified."
+        )
     print()
     print(
         "Aggregate files:"
