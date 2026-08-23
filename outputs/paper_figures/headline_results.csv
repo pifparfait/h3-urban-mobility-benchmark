@@ -1,0 +1,14 @@
+result_type,observable,scale,primary_metric,value,fidelity_population
+architecture,pure_spatial_lookup,N=1000000,speedup_x,47.48622829520521,10000
+architecture,urban_context_retrieval,N=1000000,speedup_x,26.597741878289792,10000
+architecture,accessibility_query,N=1000000,speedup_x,83.6985443964746,10000
+architecture,candidate_retrieval,N=1000000,speedup_x,42.02499412096929,10000
+architecture,full_agent_decision,N=1000000,speedup_x,4.211837250595505,10000
+fidelity,accessibility,decision,pearson,0.9904512169837562,10000
+fidelity,od_flow,H7,pearson,0.9989692329643842,10000
+fidelity,od_flow,H8,pearson,0.9890801184136994,10000
+fidelity,od_flow,H9,pearson,0.9167635103239062,10000
+fidelity,occupancy,H7,pearson,0.9927815471829412,10000
+fidelity,occupancy,H8,pearson,0.917360053472976,10000
+fidelity,occupancy,H9,pearson,0.7527969147597058,10000
+fidelity,amenity_usage,city,pearson,1.0,10000

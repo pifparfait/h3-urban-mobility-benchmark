@@ -1,0 +1,11 @@
+operation,backend,scaling_exponent_alpha,loglog_r2
+accessibility_query,Continuous-indexed,0.998165667961919,0.9999949748430157
+accessibility_query,H3,1.0409441289015442,0.9989101422360068
+candidate_retrieval,Continuous-indexed,0.9945995059353634,0.999979583612481
+candidate_retrieval,H3,1.0343493496298424,0.999953109789819
+full_agent_decision,Continuous-indexed,0.995990256268356,0.9999878832810855
+full_agent_decision,H3,1.0032372388498756,0.9997905468317521
+pure_spatial_lookup,Continuous-indexed,1.0047069966876698,0.9999940790573789
+pure_spatial_lookup,H3,1.038459454639015,0.9997433169712863
+urban_context_retrieval,Continuous-indexed,1.010052201230086,0.9994484403375495
+urban_context_retrieval,H3,1.0163988314935235,0.9999297166210787
