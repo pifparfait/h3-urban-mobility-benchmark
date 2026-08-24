@@ -132,11 +132,6 @@ The paths below follow the current cross-city output convention.
 
 Representative OD routes are projected over the common OSM walking network. Current paper assets include:
 
-```text
-FIG_ROUTED_OD_H8_manhattan.png
-FIG_ROUTED_OD_H8_kendall.png
-FIG_ROUTED_OD_H8_street_zoom.png 
-```
 ### OD Madrid 
 ![OD Madrid Zoom](outputs/paper_figures/FIG_ROUTED_OD_H8_street_zoom.png)
 
