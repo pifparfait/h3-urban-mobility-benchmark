@@ -135,8 +135,19 @@ Representative OD routes are projected over the common OSM walking network. Curr
 ```text
 FIG_ROUTED_OD_H8_manhattan.png
 FIG_ROUTED_OD_H8_kendall.png
-FIG_ROUTED_OD_H8_street_zoom.png
+FIG_ROUTED_OD_H8_street_zoom.png 
 ```
+### OD Madrid 
+![OD Madrid Zoom](outputs/paper_figures/FIG_ROUTED_OD_H8_street_zoom.png)
+
+### OD Cambridge 
+
+![OD Cambridge Zoom](outputs/cambridge_ma/paper_figures/FIG_ROUTED_OD_H8_kendall.png)
+
+### OD New York 
+
+![OD Mantattan Zoom](outputs/new_york_ny/paper_figures/FIG_ROUTED_OD_H8_manhattan.png)
+
 
 They represent:
 - **New York City:** Manhattan / Midtown zoom;
