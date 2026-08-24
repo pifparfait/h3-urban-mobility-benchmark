@@ -4,13 +4,13 @@ A reproducible **multi-city benchmark for scalable urban simulation with H3**, c
 
 > **Research question:** How much computational efficiency can a hierarchical H3 representation provide for large-scale urban agent simulation, and how much urban fidelity is retained across spatial scales?
 
-The current benchmark covers **Madrid, Cambridge (MA), and New York City**, including experiments up to **1,000,000 agents / queries**.
+The current benchmark covers **Madrid, Cambridge (MA), and New York City**. Isolated architectural workloads scale to **1,000,000 queries**, while the temporal end-to-end benchmark evaluates **10,000 and 100,000 agents** under a common five-decision schedule.
 
 ---
 
 ## 1. What this repository evaluates
 
-The framework deliberately separates three experimental questions.
+The framework deliberately separates four experimental questions.
 
 ### Architectural efficiency
 The Continuous and H3 backends are benchmarked on:
@@ -22,14 +22,19 @@ The Continuous and H3 backends are benchmarked on:
 
 The architecture sweep scales from **10K to 1M agents/queries**.
 
-### Urban fidelity
-At `N = 10,000`, paired Continuous/H3 simulations measure:
+### Architectural agreement
+At `N = 10,000`, paired Continuous/H3 simulations measure architectural agreement between the Continuous and H3 representations using:
 - accessibility correlation;
 - destination spatial equivalence;
 - trip-distance fidelity;
 - OD-flow similarity at H7/H8/H9;
 - final occupancy similarity at H7/H8/H9;
 - amenity-usage agreement.
+
+### Temporal end-to-end performance and amortization
+A separate temporal benchmark evaluates the complete repeated decision loop at **10K and 100K agents**. The schedule produces **five spatial decisions per agent** in all three cities. The experiment reports paired-median temporal-loop speedup, cold- and warm-total speedup, and break-even in **spatial decisions**.
+
+The repetition protocol is **3 repeats at 10K agents** and **5 repeats at 100K agents** for each city. Break-even is reported primarily in decisions because the five-decision schedule is an experimental protocol rather than a universal property of an agent.
 
 ### Physical-network realization
 Representative paired origin-destination decisions are projected onto the **same real OpenStreetMap walking graph**. Routing is deliberately *not* part of the H3 speedup claim.
@@ -81,9 +86,26 @@ The important result is not one maximum number: the H3 architecture remains fast
 | Cambridge | 62.96 us/query | 22.01 us/query | 2.86x |
 | New York City | 51.39 us/query | 15.72 us/query | 3.27x |
 
+### Temporal end-to-end results
+
+The 1M-query architecture benchmark above isolates computational operations. The temporal benchmark is a separate end-to-end experiment at **10K and 100K agents**, with five spatial decisions per agent.
+
+| City | Agents | Temporal speedup | Cold total | Cold BE | Warm total | Warm BE |
+|---|---:|---:|---:|---:|---:|---:|
+| Madrid | 10K | **3.26x** | **1.82x** | 17.2K | **3.21x** | 0.3K |
+| Madrid | 100K | **3.24x** | **2.98x** | 19.2K | **3.20x** | 2.6K |
+| Cambridge | 10K | **2.21x** | **1.79x** | 9.8K | **2.19x** | 0.7K |
+| Cambridge | 100K | **2.22x** | **2.15x** | 13.7K | **2.20x** | 4.9K |
+| New York City | 10K | **2.60x** | **0.28x** | 265.9K | **2.06x** | 7.3K |
+| New York City | 100K | **2.54x** | **1.43x** | 252.6K | **2.49x** | 11.0K |
+
+`Temporal speedup` is the paired median of Continuous/H3 runtime ratios. `Cold total` includes substrate construction; `Warm total` reuses the precomputed substrate. BE denotes break-even in thousands of spatial decisions.
+
+The cold-start results deliberately retain the operating regime in which H3 does not pay off: for New York City at 10K agents, substrate construction outweighs runtime savings (`0.28x`), whereas at 100K agents the cold-start total crosses into a net gain (`1.43x`).
+
 ---
 
-## 5. Fidelity validation at 10K agents
+## 5. Architectural agreement at 10K agents
 
 | Metric | Madrid | Cambridge | New York City |
 |---|---:|---:|---:|
@@ -100,7 +122,7 @@ The important result is not one maximum number: the H3 architecture remains fast
 | Occupancy H9 Pearson | 0.7528 | 0.6446 | 0.6991 |
 | Amenity usage Pearson | 1.0000 | 1.0000 | 1.0000 |
 
-The scale effect is clear: **city-scale structure is extremely well preserved at H7, neighborhood structure remains strong at H8, and finer local allocation differences become more visible at H9.**
+The scale effect is clear: **city-scale agreement is extremely high at H7, neighborhood-scale agreement remains strong at H8, and finer local allocation differences become more visible at H9.** These metrics quantify agreement between the two computational architectures under the paired protocol; they are not validation against external ground truth. Amenity-usage Pearson = 1.0 is retained as a consistency control rather than independent evidence of fidelity.
 
 ---
 
@@ -123,6 +145,14 @@ The paths below follow the current cross-city output convention.
 ### Accessibility speedup versus fidelity
 
 ![Accessibility speedup versus fidelity](outputs/cross_city/paper_figures/FIG_CC4_accessibility_speedup_vs_fidelity.png)
+
+### Temporal end-to-end speedup
+
+![Temporal end-to-end speedup](outputs/cross_city/paper_figures/FIG_CC5_end_to_end_temporal_speedup.png)
+
+### Cold/warm break-even
+
+![Break-even decisions](outputs/cross_city/paper_figures/FIG_CC6_break_even_decisions.png)
 
 > If your local analysis script writes these images to a different subdirectory, change only the Markdown image paths; the numerical master tables remain the source of truth.
 
@@ -179,6 +209,7 @@ madrid_h3_urban_benchmark/
 │   ├── 00_city_smoke_test.py
 │   ├── 00_semantic_city_check.py
 │   ├── 01_architecture_benchmark.py
+│   ├── 02_end_to_end_benchmark.py
 │   └── 03_urban_fidelity.py
 ├── outputs/
 │   ├── architecture/
@@ -306,7 +337,22 @@ The experiment reports Continuous and H3 latency, throughput and speedup. Routin
 
 ---
 
-## 14. Urban-fidelity experiment
+## 14. Temporal end-to-end experiment
+
+Run the temporal decision-loop benchmark separately from the 1M architecture sweep.
+
+```bash
+python experiments/02_end_to_end_benchmark.py --city madrid --agents 10000 --repeats 3 --static-city-mode both
+python experiments/02_end_to_end_benchmark.py --city madrid --agents 100000 --repeats 5 --static-city-mode both
+```
+
+Repeat with `cambridge_ma` and `new_york_ny`. The temporal protocol generates five spatial decisions per agent in all three cities. Semantic diversity can differ with each city's active-layer coverage and schedule fallbacks even though the decision count is held constant.
+
+The benchmark distinguishes temporal runtime, cold preparation, warm preparation, cold/warm total time, and break-even. Temporal speedup is summarized using the **median of paired per-repeat speedup ratios**. Break-even is computed from aggregated median per-decision costs and median preparation times, with sensitivity bounds derived from observed per-decision extrema.
+
+---
+
+## 15. Architectural-agreement experiment
 
 ```bash
 python experiments/03_urban_fidelity.py \
@@ -342,7 +388,7 @@ The paired endpoint diagnostic allows representative routes to be realized over 
 
 ---
 
-## 15. Master cross-city tables
+## 16. Master cross-city tables
 
 After completing the three cities:
 
@@ -358,9 +404,12 @@ outputs/cross_city/
 ├── city_characteristics_long.csv
 ├── computational_performance_1M_long.csv
 ├── fidelity_10K_long.csv
+├── end_to_end_temporal_long.csv
 ├── TABLE_1_city_characteristics.csv
 ├── TABLE_2_computational_performance_1M.csv
 ├── TABLE_3_fidelity_10K.csv
+├── TABLE_4_end_to_end_temporal_amortization.csv
+├── TABLE_4_end_to_end_temporal_amortization.tex
 └── TABLE_PAPER_cross_city_summary.csv
 ```
 
@@ -368,7 +417,7 @@ These are the numerical source for the paper's experimental tables.
 
 ---
 
-## 16. Generate figures
+## 17. Generate figures
 
 For the analysis pipeline:
 
@@ -385,7 +434,7 @@ The visualization convention is intentional:
 
 ---
 
-## 17. Reproducibility workflow
+## 18. Reproducibility workflow
 
 ```text
 Build/download municipal data
@@ -403,7 +452,13 @@ Run 1K-agent smoke test
 Architecture sweep: 10K -> 100K -> 500K -> 1M
             |
             v
-Paired urban-fidelity validation at 10K
+Paired architectural-agreement validation at 10K
+            |
+            v
+Temporal end-to-end: 10K (3 repeats) + 100K (5 repeats)
+            |
+            v
+Cold/warm amortization analysis
             |
             v
 Generate city visual diagnostics
@@ -419,7 +474,7 @@ Expensive raw-data preparation and architecture sweeps therefore do **not** need
 
 ---
 
-## 18. How to interpret the experiment
+## 19. How to interpret the experiment
 
 ### Supported by the benchmark
 
@@ -446,7 +501,7 @@ The central claim is a **speed-fidelity trade-off for spatial computation**, eva
 
 ---
 
-## 19. Data provenance and Git policy
+## 20. Data provenance and Git policy
 
 The project uses real geospatial infrastructure including OpenStreetMap-derived POIs and walking networks, WorldPop population rasters, municipal boundaries and H3 hierarchical spatial indexing.
 
@@ -454,7 +509,7 @@ Raw and generated geospatial assets are intentionally excluded from Git because 
 
 ---
 
-## 20. Current experimental status
+## 21. Current experimental status
 
 | Component | Madrid | Cambridge | NYC |
 |---|:---:|:---:|:---:|
@@ -462,15 +517,19 @@ Raw and generated geospatial assets are intentionally excluded from Git because 
 | Semantic normalization | Yes | Yes | Yes |
 | OSM walking graph | Yes | Yes | Yes |
 | Architecture benchmark to 1M | Yes | Yes | Yes |
-| Fidelity validation at 10K | Yes | Yes | Yes |
-| Cross-city master tables | Yes | Yes | Yes |
-| Paper visual analysis | Yes | Yes | Yes |
+| Architectural agreement at 10K | Yes | Yes | Yes |
+| Temporal end-to-end at 10K | Yes | Yes | Yes |
+| Temporal end-to-end at 100K | Yes | Yes | Yes |
+| Cold/warm preparation analysis | Yes | Yes | Yes |
+| Break-even analysis | Yes | Yes | Yes |
+| Cross-city master tables (Tables 1-4) | Yes | Yes | Yes |
+| Paper visual analysis (CC1-CC6) | Yes | Yes | Yes |
 
 The repository is now a **three-city cross-city validation framework**, not a Madrid-only benchmark.
 
 ---
 
-## 21. Scientific-analysis package
+## 22. Scientific-analysis package
 
 The former scientific-analysis README described the frozen experiment as three components: architectural efficiency, urban fidelity and spatial visualization. It also established the crucial rules that H11/H12 are localization/visualization only and that real OSM mobility is common infrastructure.
 
