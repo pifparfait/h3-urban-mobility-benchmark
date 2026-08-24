@@ -118,7 +118,7 @@ The paths below follow the current cross-city output convention.
 
 ### Resolution-dependent urban fidelity
 
-![Cross-city urban fidelity](outputs/cross_city/paper_figures/FIG_CC3_fidelity_cross_city.png)
+![Cross-city urban fidelity](outputs/cross_city/paper_figures/FIG_CC3_fidelity_resolution.png)
 
 ### Accessibility speedup versus fidelity
 
