@@ -1,0 +1,17 @@
+\begin{table*}[t]
+\centering
+\caption{Temporal end-to-end performance and amortization across cities. Temporal speedup reports the paired median across repeated runs. Cold-start measurements include construction of the spatial-semantic substrate, whereas warm measurements reuse the precomputed substrate. Break-even (BE) is reported in spatial decisions.}
+\label{tab:end_to_end}
+\begin{tabular}{llrrrrr}
+\toprule
+City & Agents & Temporal speedup & Cold total & Cold BE & Warm total & Warm BE \\
+\midrule
+Madrid & 10K & 3.26$\times$ & 1.82$\times$ & 17.2K & 3.21$\times$ & 0.3K \\
+Madrid & 100K & 3.24$\times$ & 2.98$\times$ & 19.2K & 3.20$\times$ & 2.6K \\
+Cambridge & 10K & 2.21$\times$ & 1.79$\times$ & 9.8K & 2.19$\times$ & 0.7K \\
+Cambridge & 100K & 2.22$\times$ & 2.15$\times$ & 13.7K & 2.20$\times$ & 4.9K \\
+New York City & 10K & 2.60$\times$ & 0.28$\times$ & 265.9K & 2.06$\times$ & 7.3K \\
+New York City & 100K & 2.54$\times$ & 1.43$\times$ & 252.6K & 2.49$\times$ & 11.0K \\
+\bottomrule
+\end{tabular}
+\end{table*}
