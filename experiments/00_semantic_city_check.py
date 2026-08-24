@@ -38,6 +38,7 @@ def main():
         choices=[
             "madrid",
             "cambridge_ma",
+            "new_york_ny",
         ],
     )
 

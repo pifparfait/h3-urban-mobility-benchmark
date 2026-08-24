@@ -310,6 +310,7 @@ def main():
         choices=[
             "madrid",
             "cambridge_ma",
+            "new_york_ny",
         ],
         help=(
             "City configuration. Madrid remains the default; "

@@ -931,7 +931,7 @@ def plot_cambridge_heatmap_triptych(
 
     titles = [
         "Continuous-indexed",
-        "H3",
+        "H3-indexed",
         "H3 − Continuous",
     ]
 
@@ -987,12 +987,27 @@ def plot_cambridge_heatmap_triptych(
     metric_label = metric_name.replace(
         "_",
         " ",
-    ).title()
+    )
+
+    if suffix == "city":
+        scope_label = "city-wide"
+    elif suffix == "manhattan":
+        scope_label = "Manhattan zoom"
+    elif suffix == "midtown_deep_zoom":
+        scope_label = "Midtown deep zoom"
+    elif suffix == "kendall":
+        scope_label = "Kendall Square zoom"
+    elif suffix == "volpe_deep_zoom":
+        scope_label = "Volpe Center deep zoom"
+    elif suffix in {"street_zoom", "deep_zoom"}:
+        scope_label = "deep local zoom"
+    else:
+        scope_label = "local zoom"
 
     fig.suptitle(
         (
-            f"Cambridge — {metric_label} H{resolution} "
-            f"(N={n_agents:,})"
+            f"Cambridge {metric_label} — "
+            f"H{resolution} aggregation, {scope_label}, N={n_agents:,}"
         ),
         fontsize=15,
     )
@@ -1420,7 +1435,7 @@ def plot_od_triptych(
     axes[
         1
     ].set_title(
-        "H3 OD"
+        "H3-indexed OD"
     )
 
     # Difference
@@ -1470,10 +1485,25 @@ def plot_od_triptych(
         "H3 − Continuous OD"
     )
 
+    if suffix == "city":
+        scope_label = "city-wide"
+    elif suffix == "manhattan":
+        scope_label = "Manhattan zoom"
+    elif suffix == "midtown_deep_zoom":
+        scope_label = "Midtown deep zoom"
+    elif suffix == "kendall":
+        scope_label = "Kendall Square zoom"
+    elif suffix == "volpe_deep_zoom":
+        scope_label = "Volpe Center deep zoom"
+    elif suffix in {"street_zoom", "deep_zoom"}:
+        scope_label = "deep local zoom"
+    else:
+        scope_label = "local zoom"
+
     fig.suptitle(
         (
-            f"Cambridge OD flows H{resolution} — "
-            f"{od_scope_label}; top-flow union, N={n_agents:,}"
+            f"Cambridge OD flows — "
+            f"H{resolution} aggregation, {scope_label}, N={n_agents:,}"
         ),
         fontsize=15,
     )
@@ -2109,9 +2139,9 @@ def plot_routed_od_triptych(
             axis_index
         ].set_title(
             (
-                "Continuous-indexed physical routes"
+                f"Continuous-indexed physical routes (H{resolution} aggregation)"
                 if architecture == "continuous"
-                else "H3 physical routes"
+                else f"H3-indexed physical routes (H{resolution} aggregation)"
             )
         )
 
@@ -2217,15 +2247,23 @@ def plot_routed_od_triptych(
 
     if display_bounds is None:
         scope = "city-wide"
+    elif suffix == "manhattan":
+        scope = "Manhattan zoom"
+    elif suffix == "midtown_deep_zoom":
+        scope = "Midtown deep zoom"
+    elif suffix == "kendall":
+        scope = "Kendall Square zoom"
+    elif suffix == "volpe_deep_zoom":
+        scope = "Volpe Center deep zoom"
     elif suffix in {"street_zoom", "deep_zoom"}:
-        scope = "street-level crop of H8 local zoom"
+        scope = "deep local zoom"
     else:
         scope = "local zoom"
 
     fig.suptitle(
         (
-            f"Cambridge representative physical OSM routes H{resolution} — "
-            f"{scope}, N={n_agents:,}"
+            f"Cambridge representative physical OSM routes — "
+            f"H{resolution} OD aggregation, {scope}, N={n_agents:,}"
         ),
         fontsize=15,
     )

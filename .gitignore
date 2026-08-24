@@ -1,30 +1,89 @@
+# ============================================================
+# Python environments and caches
+# ============================================================
 .venv/
+venv/
+env/
 __pycache__/
-*.pyc
+*.py[cod]
 .pytest_cache/
+
+# ============================================================
+# macOS / OS metadata
+# ============================================================
 .DS_Store
+**/.DS_Store
 
-# Local/raw data and caches
-data/raw/*
-data/processed/*
-data/cache/*
+# ============================================================
+# IDE / editor
+# ============================================================
+.vscode/
+.idea/
 
+# ============================================================
+# Local/raw data and generated city data
+# ============================================================
+
+# Original Madrid structure
+data/raw/**
+data/processed/**
+data/cache/**
+
+# Multi-city structure
+data/*/raw/**
+data/*/processed/**
+data/*/cache/**
+
+# Keep directory placeholders if present
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 !data/cache/.gitkeep
 
-# Large binary assets
+!data/*/raw/.gitkeep
+!data/*/processed/.gitkeep
+!data/*/cache/.gitkeep
+
+# ============================================================
+# Large binary / generated geospatial assets
+# ============================================================
 *.pkl
+*.pickle
 *.graphml
 *.tif
 *.tiff
 *.npy
+*.npz
 *.dat
+*.memmap
+*.part
 
-# Temporary/local artifacts
+# ============================================================
+# Routing matrices / derived binary caches
+# ============================================================
+**/routing_matrix/**
+**/*routing_matrix*/**
+
+# ============================================================
+# Temporary / local artifacts
+# ============================================================
 *.zip
 *.log
+*.tmp
+*.temp
 
-# IDE/editor
-.vscode/
-.idea/
+# ============================================================
+# Jupyter
+# ============================================================
+.ipynb_checkpoints/
+
+# ============================================================
+# Build / packaging
+# ============================================================
+build/
+dist/
+*.egg-info/
+# Local application / analysis cache
+cache/
+
+# Regenerable urban-fidelity diagnostics
+outputs/**/urban_fidelity/diagnostics_n*/

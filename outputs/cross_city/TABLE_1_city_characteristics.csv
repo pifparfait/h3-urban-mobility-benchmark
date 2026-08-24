@@ -1,0 +1,7 @@
+metric,Madrid,Cambridge,New York City
+represented_population,2337707.8812355995,103855.02128586173,8037286.605910279
+raw_pois,38949.0,7831.0,305387.0
+semantic_pois,38949.0,2102.0,126595.0
+population_h3_cells,2037.0,175.0,6747.0
+osm_graph_nodes,122237.0,20322.0,361278.0
+osm_graph_edges,373234.0,54756.0,1108754.0

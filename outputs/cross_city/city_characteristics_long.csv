@@ -1,0 +1,4 @@
+city_key,city,raw_pois,semantic_pois,population_h3_cells,represented_population,osm_graph_nodes,osm_graph_edges
+madrid,Madrid,38949,38949,2037,2337707.8812355995,122237,373234
+cambridge_ma,Cambridge,7831,2102,175,103855.02128586173,20322,54756
+new_york_ny,New York City,305387,126595,6747,8037286.605910279,361278,1108754

@@ -9,6 +9,7 @@ from h3uab.config import Config, RoutingConfig
 SUPPORTED_CITIES = (
     "madrid",
     "cambridge_ma",
+    "new_york_ny",
 )
 
 
@@ -25,6 +26,11 @@ def normalize_city_name(city: str) -> str:
         "kendall": "cambridge_ma",
         "kendall_square": "cambridge_ma",
         "volpe": "cambridge_ma",
+        "new_york": "new_york_ny",
+        "new_york_city": "new_york_ny",
+        "new_york_ny": "new_york_ny",
+        "nyc": "new_york_ny",
+        "manhattan": "new_york_ny",
     }
 
     if value not in aliases:
@@ -135,6 +141,86 @@ def _cambridge_config(n_agents: int | None = None) -> Config:
     return cfg
 
 
+
+def _new_york_config(n_agents: int | None = None) -> Config:
+    """
+    New York City configuration using the identical scientific architecture
+    and behavioral protocol as Madrid and Cambridge.
+    """
+
+    base = Config()
+
+    routing = replace(
+        base.routing,
+        graphml_path=Path(
+            "data/new_york_ny/cache/new_york_walk_graph.graphml"
+        ),
+        h3_index_path=Path(
+            "data/new_york_ny/cache/"
+            "new_york_walk_graph_h3_index.pkl"
+        ),
+        routing_matrix_dir=Path(
+            "data/new_york_ny/cache/routing_matrix"
+        ),
+    )
+
+    cfg = replace(
+        base,
+
+        city_name="new_york_ny",
+
+        # NYC five-borough domain plus small OSM graph buffer.
+        lat_min=40.4700,
+        lat_max=40.9250,
+        lng_min=-74.2700,
+        lng_max=-73.6900,
+
+        n_agents=(
+            int(n_agents)
+            if n_agents is not None
+            else base.n_agents
+        ),
+
+        osm_cache_csv=Path(
+            "data/new_york_ny/processed/"
+            "new_york_osm_pois.csv"
+        ),
+
+        population_h3_csv=Path(
+            "data/new_york_ny/processed/"
+            "new_york_population_h3_r9.csv"
+        ),
+
+        population_h3_id_col="h3",
+
+        static_city_cache=Path(
+            "data/new_york_ny/cache/"
+            "new_york_static_city_h3.pkl"
+        ),
+
+        worldpop_country_tif=Path(
+            "data/new_york_ny/raw/worldpop/"
+            "usa_ppp_2020_UNadj_constrained.tif"
+        ),
+
+        worldpop_city_tif=Path(
+            "data/new_york_ny/processed/worldpop/"
+            "new_york_worldpop_2020.tif"
+        ),
+
+        worldpop_url=(
+            "https://data.worldpop.org/GIS/Population/"
+            "Global_2000_2020_Constrained/2020/BSGM/USA/"
+            "usa_ppp_2020_UNadj_constrained.tif"
+        ),
+
+        routing=routing,
+    )
+
+    cfg.h3.validate()
+    return cfg
+
+
 def config_for_city(
     city: str,
     *,
@@ -149,6 +235,11 @@ def config_for_city(
 
     if city == "cambridge_ma":
         return _cambridge_config(
+            n_agents=n_agents,
+        )
+
+    if city == "new_york_ny":
+        return _new_york_config(
             n_agents=n_agents,
         )
 
