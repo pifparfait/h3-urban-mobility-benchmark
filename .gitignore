@@ -87,3 +87,19 @@ cache/
 
 # Regenerable urban-fidelity diagnostics
 outputs/**/urban_fidelity/diagnostics_n*/
+
+# ============================================================
+# External mobility validation data
+# ============================================================
+
+# External source data: Census TIGER/LODES, INE mobility areas, etc.
+data/external_od/**
+
+# Large intermediate OD validation outputs.
+# Final paper-ready cross-city summaries are kept separately.
+outputs/external_od_validation/**
+outputs/external_od_validation_sensitivity/**
+
+# Intermediate development versions of external OD validation
+experiments/07_external_od_validation_madrid.py
+experiments/07_external_od_validation_pre_madrid.py

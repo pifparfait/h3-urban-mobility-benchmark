@@ -345,7 +345,16 @@ def main():
                         ]
                     ),
                 )
+                profile_type = int(
+                    world.agent_profile_type[aid]
+                )
 
+                purpose_id = int(
+                    world.profile_schedule_purpose_ids[
+                        profile_type,
+                        step,
+                    ]
+                )
                 fidelity.update(
                     old_c,
                     old_h,
@@ -359,6 +368,7 @@ def main():
                     decision_h.straight_distance_m,
                     agent_id=aid,
                     step=step,
+                    purpose_id=purpose_id,
                 )
 
     fidelity.finalize_occupancy(

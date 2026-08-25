@@ -7,6 +7,8 @@ import h3
 import numpy as np
 import pandas as pd
 
+from .agent_profiles import PURPOSE_WORK
+
 
 def jsd_counter(a: Counter, b: Counter):
     keys = set(a) | set(b)
@@ -61,6 +63,13 @@ class UrbanFidelity:
         self.resolutions = tuple(resolutions)
         self.od_c = {r: Counter() for r in self.resolutions}
         self.od_h = {r: Counter() for r in self.resolutions}
+
+        # Purpose-specific commuting OD used only for external validation
+        # against observed home-to-work mobility sources such as LODES.
+        # The canonical all-purpose OD counters above remain unchanged.
+        self.work_od_c = {r: Counter() for r in self.resolutions}
+        self.work_od_h = {r: Counter() for r in self.resolutions}
+
         self.occ_c = {r: Counter() for r in self.resolutions}
         self.occ_h = {r: Counter() for r in self.resolutions}
 
@@ -108,6 +117,7 @@ class UrbanFidelity:
         th,
         agent_id=None,
         step=None,
+        purpose_id=None,
     ):
         self.n += 1
         self.dest_exact += int(dc == dh)
@@ -137,6 +147,7 @@ class UrbanFidelity:
         record = {
             "agent_id": int(agent_id) if agent_id is not None else -1,
             "step": int(step) if step is not None else -1,
+            "purpose_id": int(purpose_id) if purpose_id is not None else -1,
             "continuous_origin_lat": float(old_c[0]),
             "continuous_origin_lng": float(old_c[1]),
             "continuous_destination_lat": float(new_c[0]),
@@ -173,6 +184,13 @@ class UrbanFidelity:
             self.od_c[r][(oc, nc)] += 1
             self.od_h[r][(oh, nh)] += 1
 
+            if (
+                purpose_id is not None
+                and int(purpose_id) == PURPOSE_WORK
+            ):
+                self.work_od_c[r][(oc, nc)] += 1
+                self.work_od_h[r][(oh, nh)] += 1
+
             self.visit_c[r][nc] += 1
             self.visit_h[r][nh] += 1
 
@@ -196,7 +214,8 @@ class UrbanFidelity:
           - destination separation samples for an exact ECDF;
           - final occupancy at H7/H8/H9;
           - cumulative visit density at H7/H8/H9;
-          - OD flows at H7/H8/H9.
+          - OD flows at H7/H8/H9;
+          - work-purpose OD flows at H7/H8/H9 for external validation.
 
         H11/H12 are deliberately absent.
         Physical OSM routing is deliberately absent.
@@ -305,6 +324,14 @@ class UrbanFidelity:
                 index=False,
             )
 
+            od_table(
+                self.work_od_c[r],
+                self.work_od_h[r],
+            ).to_csv(
+                output_dir / f"work_od_flows_H{r}.csv",
+                index=False,
+            )
+
     def summary(self):
         ac = np.asarray(self.access_c)
         ah = np.asarray(self.access_h)
@@ -376,6 +403,18 @@ class UrbanFidelity:
                 "metric": "od_flow", "scale": f"H{r}",
                 **od, "primary_value": od["pearson"],
             })
+
+            work_od = paired_counter_metrics(
+                self.work_od_c[r],
+                self.work_od_h[r],
+            )
+            rows.append({
+                "metric": "work_od_flow",
+                "scale": f"H{r}",
+                **work_od,
+                "primary_value": work_od["pearson"],
+            })
+
             rows.append({
                 "metric": "occupancy", "scale": f"H{r}",
                 **occ, "primary_value": occ["pearson"],
