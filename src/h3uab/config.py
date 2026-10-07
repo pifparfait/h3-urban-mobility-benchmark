@@ -99,6 +99,8 @@ class BaselineConfig:
     primary_continuous: str = "indexed"
     run_naive_dynamic: bool = False
     indexed_leaf_size: int = 40
+    candidate_strategy: str = "radius_exact"  # radius_exact, radius_cap, knn
+    candidate_cap: int | None = None
 
 
 @dataclass(frozen=True)

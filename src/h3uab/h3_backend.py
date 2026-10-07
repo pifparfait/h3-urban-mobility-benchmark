@@ -212,6 +212,11 @@ class MultiLayerH3Backend(
         agent_lng,
         layer_code,
     ):
+        trace = getattr(self, "trace", None)
+        if trace is not None:
+            trace.update(buckets=0, raw_pois=0, eligible=0, retained=0,
+                         scored=0, fallback=0, cached_best=0, fallback_inspected=0,
+                         fallback_scored=0)
         t_lookup = (
             time.perf_counter()
         )
@@ -257,14 +262,13 @@ class MultiLayerH3Backend(
         if (
             self.cfg.destination_refinement.enabled
         ):
-            candidates = (
-                get_h10_candidate_poi_ids(
-                    self.city,
-                    h12,
-                    layer_code,
-                    self.cfg,
-                )
-            )
+            t_collect = time.perf_counter() if trace is not None else None
+            if trace is None:
+                candidates = get_h10_candidate_poi_ids(self.city, h12, layer_code, self.cfg)
+            else:
+                candidates = get_h10_candidate_poi_ids(self.city, h12, layer_code, self.cfg, trace)
+            if trace is not None:
+                trace["collection_time_s"] = time.perf_counter() - t_collect
 
             if candidates:
                 t_refine = (
@@ -278,6 +282,8 @@ class MultiLayerH3Backend(
                         agent_lng,
                     )
                 )
+                if trace is not None:
+                    trace["scored"] = int(evaluated[2]) if evaluated is not None else 0
 
                 self.profile.distance_time_s += (
                     time.perf_counter()
@@ -336,6 +342,9 @@ class MultiLayerH3Backend(
             access is not None
             and access.best_poi_id >= 0
         ):
+            if trace is not None:
+                trace["fallback"] = 1
+                trace["cached_best"] = 1
             destination_id = int(
                 access.best_poi_id
             )
@@ -395,15 +404,14 @@ class MultiLayerH3Backend(
             self.cfg.destination_refinement.enable_fallback
         ):
             self.fallback_decisions += 1
+            if trace is not None:
+                trace["fallback"] = 1
+            t_fallback = time.perf_counter() if trace is not None else None
 
-            fallback_ids = (
-                get_h9_fallback_candidate_poi_ids(
-                    self.city,
-                    h12,
-                    layer_code,
-                    self.cfg,
-                )
-            )
+            if trace is None:
+                fallback_ids = get_h9_fallback_candidate_poi_ids(self.city, h12, layer_code, self.cfg)
+            else:
+                fallback_ids = get_h9_fallback_candidate_poi_ids(self.city, h12, layer_code, self.cfg, trace)
 
             if fallback_ids:
                 evaluated = (
@@ -413,6 +421,8 @@ class MultiLayerH3Backend(
                         agent_lng,
                     )
                 )
+                if trace is not None:
+                    trace["fallback_scored"] = int(evaluated[2]) if evaluated is not None else 0
 
                 if evaluated is not None:
                     (
@@ -422,6 +432,8 @@ class MultiLayerH3Backend(
                     ) = evaluated
 
                     self.fallback_successes += 1
+                    if trace is not None:
+                        trace["fallback_time_s"] = time.perf_counter() - t_fallback
 
                     return SpatialDecision(
                         destination_id=(
@@ -440,6 +452,8 @@ class MultiLayerH3Backend(
                             0.0
                         ),
                     )
+            if trace is not None:
+                trace["fallback_time_s"] = time.perf_counter() - t_fallback
 
         return SpatialDecision(
             -1,
