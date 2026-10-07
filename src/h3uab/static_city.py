@@ -499,6 +499,7 @@ def get_h10_candidate_poi_ids(
     h12_cell,
     layer_code,
     cfg,
+    diagnostics=None,
 ):
     """
     Return a bounded candidate tuple from H3@10 buckets around the agent.
@@ -522,10 +523,14 @@ def get_h10_candidate_poi_ids(
     )
 
     candidate_ids = []
+    if diagnostics is not None:
+        diagnostics["buckets"] = 0
 
     index = city.poi_index_h10
 
     for cell in cells:
+        if diagnostics is not None:
+            diagnostics["buckets"] += 1
         value = None
 
         if (
@@ -588,10 +593,12 @@ def get_h10_candidate_poi_ids(
             break
 
     if not candidate_ids:
+        if diagnostics is not None:
+            diagnostics.update(raw_pois=0, eligible=0, retained=0)
         return ()
 
     # Stable deduplication + hard cap.
-    return tuple(
+    result = tuple(
         dict.fromkeys(
             candidate_ids
         )
@@ -601,6 +608,10 @@ def get_h10_candidate_poi_ids(
             cfg.destination_refinement.max_candidates
         )
     ]
+    if diagnostics is not None:
+        diagnostics.update(raw_pois=len(candidate_ids),
+                           eligible=len(set(candidate_ids)), retained=len(result))
+    return result
 
 
 def get_h9_fallback_candidate_poi_ids(
@@ -608,6 +619,7 @@ def get_h9_fallback_candidate_poi_ids(
     h12_cell,
     layer_code,
     cfg,
+    diagnostics=None,
 ):
     """
     Fallback for H9 missing states.
@@ -671,8 +683,11 @@ def get_h9_fallback_candidate_poi_ids(
         ):
             break
 
-    return tuple(
+    result = tuple(
         dict.fromkeys(
             ids
         )
     )
+    if diagnostics is not None:
+        diagnostics.update(fallback_inspected=len(ids), fallback_retained=len(result))
+    return result

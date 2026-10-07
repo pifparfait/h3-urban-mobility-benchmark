@@ -37,6 +37,12 @@ class ContinuousIndexedBackend(SpatialBackend):
 
         self.world = world
         self.cfg = cfg
+        self.candidate_strategy = cfg.baseline.candidate_strategy
+        self.candidate_cap = cfg.baseline.candidate_cap
+        if self.candidate_strategy not in {"radius_exact", "radius_cap", "knn"}:
+            raise ValueError(f"Unknown candidate strategy: {self.candidate_strategy}")
+        if self.candidate_strategy != "radius_exact" and (self.candidate_cap is None or self.candidate_cap < 1):
+            raise ValueError("Bounded continuous strategies require candidate_cap >= 1")
 
         self.by_layer = {}
         self.trees = {}
@@ -142,18 +148,18 @@ class ContinuousIndexedBackend(SpatialBackend):
             ]
         )
 
-        local_idx = tree.query_radius(
-            query,
-            r=(
-                float(
-                    self.cfg.search_radius_m
-                )
-                / EARTH_RADIUS_M
-            ),
-            return_distance=False,
-        )[
-            0
-        ]
+        if self.candidate_strategy == "knn":
+            local_idx = tree.query(
+                query, k=min(int(self.candidate_cap), len(ids)),
+                return_distance=False,
+            )[0]
+        else:
+            local_idx = tree.query_radius(
+                query,
+                r=float(self.cfg.search_radius_m) / EARTH_RADIUS_M,
+                return_distance=False,
+            )[0]
+        returned_count = int(local_idx.size)
 
         self.profile.lookup_time_s += (
             time.perf_counter()
@@ -161,6 +167,10 @@ class ContinuousIndexedBackend(SpatialBackend):
         )
 
         if local_idx.size == 0:
+            trace = getattr(self, "trace", None)
+            if trace is not None:
+                trace.update(returned=0, eligible=0, retained=0, scored=0,
+                             requested=(int(self.candidate_cap) if self.candidate_strategy == "knn" else 0))
             return SpatialDecision(
                 -1,
                 0.0,
@@ -204,6 +214,30 @@ class ContinuousIndexedBackend(SpatialBackend):
         distances = distances[
             keep
         ]
+        eligible_count = int(candidates.size)
+
+        # The radius-cap ablation changes destination scoring only. Keep the
+        # exhaustive baseline's accessibility aggregate over every eligible
+        # POI, even when fewer destinations are subsequently scored.
+        full_accessibility = None
+        if self.candidate_strategy == "radius_cap" and candidates.size > self.candidate_cap:
+            full_accessibility = float(np.sum(
+                self.world.amenity_attractiveness[candidates]
+                * np.exp(-distances / self.cfg.accessibility_decay_m)
+            ))
+
+        # Radius-cap retains the original exhaustive query and exact-radius
+        # filtering. Stable distance/POI-ID order makes ties reproducible.
+        if self.candidate_strategy == "radius_cap" and candidates.size > self.candidate_cap:
+            selected = np.lexsort((candidates, distances))[:self.candidate_cap]
+            candidates = candidates[selected]
+            distances = distances[selected]
+
+        trace = getattr(self, "trace", None)
+        if trace is not None:
+            trace.update(returned=returned_count, eligible=eligible_count,
+                         retained=int(candidates.size), scored=int(candidates.size),
+                         requested=(int(self.candidate_cap) if self.candidate_strategy == "knn" else 0))
 
         self.profile.distance_time_s += (
             time.perf_counter()
@@ -224,14 +258,13 @@ class ContinuousIndexedBackend(SpatialBackend):
             ]
         )
 
-        accessibility = float(
-            np.sum(
+        accessibility = (
+            full_accessibility
+            if full_accessibility is not None
+            else float(np.sum(
                 attractiveness
-                * np.exp(
-                    -distances
-                    / self.cfg.accessibility_decay_m
-                )
-            )
+                * np.exp(-distances / self.cfg.accessibility_decay_m)
+            ))
         )
 
         t_dec = time.perf_counter()

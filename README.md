@@ -847,10 +847,16 @@ tables and publication figures** needed to reproduce and audit the work.
   Cross-city external-validation synthesis     Yes        Yes      Yes
   Paper visual analysis (CC1-CC6)              Yes        Yes      Yes
   Routed external-validation figure            Yes        Yes      Yes
+  Candidate-architecture ablation                No         Yes       No
 
 The repository is now a **three-city cross-city validation framework
 with independent observed-mobility validation**, not a Madrid-only
 benchmark.
+
+The candidate-architecture ablation is a **separate Cambridge-only
+experiment**. Madrid and NYC were not run in that ablation because the
+required POI and population inputs were unavailable in the measurement
+environment; the three-city results above belong to the earlier protocols.
 
 ------------------------------------------------------------------------
 
@@ -864,6 +870,28 @@ infrastructure.
 
 Those principles are now consolidated here so the repository can use
 **one authoritative README**.
+
+## Candidate-architecture ablation (Cambridge only)
+
+This experiment separates exhaustive-radius retrieval, post-retrieval
+candidate-score reduction, bounded BallTree kNN retrieval, and the
+H3-based cached/bucketed architecture. It replays identical independent
+queries through five configurations, reports paired timings and realized
+candidate counts, and compares destination identity with the original
+continuous implementation (a reference, not behavioural truth).
+
+For the Cambridge million-query workload, median complete-decision latencies
+were 63.33 µs (exhaustive Continuous), 69.26 µs (radius-cap24), 62.65 µs
+(BallTree kNN24), 23.36 µs (H3-24), and 23.21 µs (H3-48), across five paired
+repetitions. H3-24 scored only 1.07 POIs on average versus 21.43 for either
+bounded Continuous variant. The residual speed gap is therefore an
+architecture contrast, not an isolated effect of H3 indexing.
+
+The runner, exact reproduction commands, and fairness boundaries are in
+[`experiments/CANDIDATE_ABLATION.md`](experiments/CANDIDATE_ABLATION.md).
+Machine-readable timings, diagnostics, metadata and publication figures are
+in [`results/candidate_ablation/`](results/candidate_ablation/). The
+cross-city ablation remains outstanding.
 
 ------------------------------------------------------------------------
 
