@@ -1,0 +1,10 @@
+city,route,published_id_disagreements,same_osm_entity,different_osm_or_missing
+cambridge_ma,cached_best_h9,4309,203,4106
+cambridge_ma,local_h10,3291,50,3241
+madrid,bounded_fallback_h9,11,0,11
+madrid,cached_best_h9,1979,0,1979
+madrid,local_h10,4243,0,4243
+madrid,none,2,0,2
+new_york_ny,cached_best_h9,3837,293,3544
+new_york_ny,local_h10,3369,112,3257
+new_york_ny,none,1,0,1

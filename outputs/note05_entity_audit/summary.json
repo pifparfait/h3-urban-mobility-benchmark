@@ -1,0 +1,47 @@
+{
+  "madrid": {
+    "processed_poi_rows": 38949,
+    "unique_osm_entities_global": 38842,
+    "unique_layer_osm_pairs": 38949,
+    "duplicate_excess_rows_within_layer": 0,
+    "duplicate_rows_within_layer": 0,
+    "duplicate_groups_within_layer": 0,
+    "decisions": 50000,
+    "exact_destination_id_agreement": 31922,
+    "exact_destination_id_agreement_pct": 63.844,
+    "source_osm_entity_agreement": 31922,
+    "source_osm_entity_agreement_pct": 63.844,
+    "additional_entity_agreements": 0,
+    "paired_endpoint_sha256": "847bfc2f5d51a32ee387ec1b290237934ae6650de56eaae9a13f54eced9cacf0"
+  },
+  "cambridge_ma": {
+    "processed_poi_rows": 2102,
+    "unique_osm_entities_global": 2037,
+    "unique_layer_osm_pairs": 2050,
+    "duplicate_excess_rows_within_layer": 52,
+    "duplicate_rows_within_layer": 104,
+    "duplicate_groups_within_layer": 52,
+    "decisions": 50000,
+    "exact_destination_id_agreement": 29610,
+    "exact_destination_id_agreement_pct": 59.22,
+    "source_osm_entity_agreement": 29863,
+    "source_osm_entity_agreement_pct": 59.726,
+    "additional_entity_agreements": 253,
+    "paired_endpoint_sha256": "f5b7cd8c94f633cefe2a264244cb6e23bfcc936a376745b5ae5f8280f1394c27"
+  },
+  "new_york_ny": {
+    "processed_poi_rows": 126595,
+    "unique_osm_entities_global": 123071,
+    "unique_layer_osm_pairs": 123611,
+    "duplicate_excess_rows_within_layer": 2984,
+    "duplicate_rows_within_layer": 5968,
+    "duplicate_groups_within_layer": 2984,
+    "decisions": 50000,
+    "exact_destination_id_agreement": 32427,
+    "exact_destination_id_agreement_pct": 64.854,
+    "source_osm_entity_agreement": 32832,
+    "source_osm_entity_agreement_pct": 65.664,
+    "additional_entity_agreements": 405,
+    "paired_endpoint_sha256": "1ffdb61b4b58ea9f12fbb5f37524bc98aa9ba72d6ec1e7d595a549e0eabcb492"
+  }
+}
