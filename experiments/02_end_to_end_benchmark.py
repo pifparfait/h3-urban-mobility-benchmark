@@ -670,42 +670,26 @@ def summarize_case(raw_case, static_city_mode):
             h3_cold_prepare_profile + h_runtime
         )
 
-        # Primary cold-total speedup must use paired repeat ratios,
-        # exactly like the temporal-loop speedup.
-        if (
-            "cold_total_speedup_h3_over_continuous"
-            in raw_case.columns
-            and raw_case[
-                "cold_total_speedup_h3_over_continuous"
-            ].notna().any()
-        ):
-            cold_total_stats = median_stats(
-                raw_case[
-                    "cold_total_speedup_h3_over_continuous"
-                ]
-                .dropna()
-                .to_numpy(float)
-            )
-
-            row[
-                "cold_total_speedup_profile_h3_over_continuous"
-            ] = cold_total_stats["median"]
-            row["cold_total_speedup_median"] = cold_total_stats["median"]
-            row["cold_total_speedup_min"] = cold_total_stats["min"]
-            row["cold_total_speedup_max"] = cold_total_stats["max"]
-            row["cold_total_speedup_std"] = cold_total_stats["std"]
-        else:
-            # Backward-compatible fallback for legacy raw files.
-            # This is ratio-of-medians and should not be used as the
-            # manuscript headline once paired raw totals are available.
-            row[
-                "cold_total_speedup_profile_h3_over_continuous"
-            ] = (
-                row["continuous_total_cold_profile_s"]
-                / row["h3_total_cold_profile_s"]
-                if row["h3_total_cold_profile_s"] > 0
-                else np.nan
-            )
+        # Single estimator for every city and legacy CSV schema:
+        # paired per-repeat ratios using externally measured preparation.
+        cold_ratios = (
+            raw_case["continuous_prepare_s"].to_numpy(float)
+            + raw_case["continuous_runtime_s"].to_numpy(float)
+        ) / (
+            raw_case["h3_cold_prepare_s"].to_numpy(float)
+            + raw_case["h3_runtime_s"].to_numpy(float)
+        )
+        if not np.isfinite(cold_ratios).all():
+            raise ValueError("Missing/non-finite cold paired total timings")
+        cold_total_stats = median_stats(cold_ratios)
+        row["cold_total_speedup_paired_h3_over_continuous"] = cold_total_stats["median"]
+        # DEPRECATED alias: historically misnamed 'profile'; now a paired
+        # wall-preparation total, retained for downstream compatibility only.
+        row["cold_total_speedup_profile_h3_over_continuous"] = cold_total_stats["median"]
+        row["cold_total_speedup_median"] = cold_total_stats["median"]
+        row["cold_total_speedup_min"] = cold_total_stats["min"]
+        row["cold_total_speedup_max"] = cold_total_stats["max"]
+        row["cold_total_speedup_std"] = cold_total_stats["std"]
 
         row["continuous_total_cold_wall_s"] = (
             c_prepare + c_runtime
@@ -777,37 +761,22 @@ def summarize_case(raw_case, static_city_mode):
             h3_warm_prepare + h_runtime
         )
 
-        if (
-            "warm_total_speedup_h3_over_continuous"
-            in raw_case.columns
-            and raw_case[
-                "warm_total_speedup_h3_over_continuous"
-            ].notna().any()
-        ):
-            warm_total_stats = median_stats(
-                raw_case[
-                    "warm_total_speedup_h3_over_continuous"
-                ]
-                .dropna()
-                .to_numpy(float)
-            )
-
-            row[
-                "warm_total_speedup_h3_over_continuous"
-            ] = warm_total_stats["median"]
-            row["warm_total_speedup_median"] = warm_total_stats["median"]
-            row["warm_total_speedup_min"] = warm_total_stats["min"]
-            row["warm_total_speedup_max"] = warm_total_stats["max"]
-            row["warm_total_speedup_std"] = warm_total_stats["std"]
-        else:
-            row[
-                "warm_total_speedup_h3_over_continuous"
-            ] = (
-                row["continuous_total_warm_s"]
-                / row["h3_total_warm_s"]
-                if row["h3_total_warm_s"] > 0
-                else np.nan
-            )
+        warm_ratios = (
+            raw_case["continuous_prepare_s"].to_numpy(float)
+            + raw_case["continuous_runtime_s"].to_numpy(float)
+        ) / (
+            raw_case["h3_warm_prepare_s"].to_numpy(float)
+            + raw_case["h3_runtime_s"].to_numpy(float)
+        )
+        if not np.isfinite(warm_ratios).all():
+            raise ValueError("Missing/non-finite warm paired total timings")
+        warm_total_stats = median_stats(warm_ratios)
+        row["warm_total_speedup_paired_h3_over_continuous"] = warm_total_stats["median"]
+        row["warm_total_speedup_h3_over_continuous"] = warm_total_stats["median"]
+        row["warm_total_speedup_median"] = warm_total_stats["median"]
+        row["warm_total_speedup_min"] = warm_total_stats["min"]
+        row["warm_total_speedup_max"] = warm_total_stats["max"]
+        row["warm_total_speedup_std"] = warm_total_stats["std"]
 
     return row
 
@@ -1423,11 +1392,11 @@ def main():
                 "(wall includes one-off serialization)"
             )
             print(
-                "  COLD-START TOTAL SPEEDUP (profile prepare) = "
+                "  COLD-START TOTAL SPEEDUP (paired, wall prepare) = "
                 f"{summary['cold_total_speedup_profile_h3_over_continuous']:.3f}x"
             )
             print(
-                "  COLD-START TOTAL SPEEDUP (wall upper bound) = "
+                "  COLD-START TOTAL SPEEDUP (paired, wall alias) = "
                 f"{summary['cold_total_speedup_wall_h3_over_continuous']:.3f}x"
             )
             if pd.notna(

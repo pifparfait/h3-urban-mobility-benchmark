@@ -291,7 +291,7 @@ def build_end_to_end_table(
                     "cold_total_speedup":
                         _num(
                             r,
-                            "cold_total_speedup_profile_h3_over_continuous",
+                            "cold_total_speedup_paired_h3_over_continuous",
                         ),
                     "cold_break_even_decisions":
                         cold_be,
@@ -312,7 +312,7 @@ def build_end_to_end_table(
                     "warm_total_speedup":
                         _num(
                             r,
-                            "warm_total_speedup_h3_over_continuous",
+                            "warm_total_speedup_paired_h3_over_continuous",
                         ),
                     "warm_break_even_decisions":
                         warm_be,
