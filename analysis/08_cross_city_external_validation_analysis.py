@@ -971,8 +971,9 @@ def make_h7_routed_validation_figure(
             "Observed OD flows and residual structures are projected onto the "
             "same OSM walking network used for both simulation backends. "
             "Continuous and H3 residual panels use identical signed color "
-            "scales within each city; quantitative non-degradation is assessed "
-            "with ΔTVD and ΔJSD rather than visual subtraction."
+            "scales within each city; the incremental H3 − Continuous "
+            "difference is quantified with ΔTVD and ΔJSD rather "
+            "than by visual subtraction."
         ),
         ha="center",
         va="bottom",
