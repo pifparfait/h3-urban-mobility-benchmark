@@ -960,7 +960,7 @@ def make_h7_routed_validation_figure(
         )
 
     fig.suptitle(
-        "External OD validation on routed urban networks (H7)",
+        "Observed-OD comparison on routed urban networks (H7)",
         fontsize=15,
     )
 

@@ -1,0 +1,123 @@
+{
+  "timestamp_utc": "2026-10-07T08:07:39.145102+00:00",
+  "git_commit": "2d2fab3204c81d8957acab89072cf97a09411bb4",
+  "git_dirty": true,
+  "os": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+  "cpu_model": "12th Gen Intel(R) Core(TM) i7-12700",
+  "logical_cores": 20,
+  "physical_cores": 12,
+  "ram_bytes": 16417636352,
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "versions": {
+    "numpy": "1.26.4",
+    "pandas": "2.2.2",
+    "scipy": "1.17.1",
+    "sklearn": "1.8.0",
+    "h3": "4.2.2",
+    "matplotlib": "3.10.8",
+    "geopandas": "0.14.4",
+    "shapely": "2.0.2",
+    "rasterio": "1.4.4"
+  },
+  "threads": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1"
+  },
+  "seed": 42,
+  "agents": 10000,
+  "repeats": 5,
+  "workloads": [
+    100000,
+    1000000
+  ],
+  "requested_cities": [
+    "madrid",
+    "cambridge_ma",
+    "new_york_ny"
+  ],
+  "available_cities": [
+    "cambridge_ma"
+  ],
+  "missing_inputs": {
+    "madrid": [
+      "data/processed/madrid_osm_pois.csv",
+      "data/processed/madrid_population_h3_r9.csv"
+    ],
+    "new_york_ny": [
+      "data/new_york_ny/processed/new_york_osm_pois.csv",
+      "data/new_york_ny/processed/new_york_population_h3_r9.csv"
+    ]
+  },
+  "scope": "independent complete decisions; no routing or movement",
+  "query_seed_offset": 7001,
+  "diagnostic_queries": 10000,
+  "world_cambridge_ma": {
+    "agent_sampling_mode": "worldpop_h3_weighted",
+    "population_source_path": "data/cambridge_ma/processed/cambridge_population_h3_r9.csv",
+    "population_cells_used": 175,
+    "population_total_weight": 103855.02128586173,
+    "population_h3_resolution_min": 9,
+    "population_h3_resolution_max": 9,
+    "sampled_unique_population_cells": 168,
+    "city_name": "cambridge_ma",
+    "n_real_osm_pois": 2102,
+    "active_layer_codes": [
+      "D14",
+      "D15",
+      "D16",
+      "D17",
+      "D18",
+      "D19",
+      "D20",
+      "D21",
+      "D22",
+      "D23",
+      "D24",
+      "D25",
+      "D3",
+      "D4",
+      "D5",
+      "D7",
+      "D8",
+      "D9"
+    ],
+    "behavior_model": "controlled_synthetic_profiles_and_schedules",
+    "profile_counts": {
+      "0": 4915,
+      "1": 1987,
+      "2": 1595,
+      "3": 1503
+    },
+    "schedule_layer_resolution": {
+      "home": "HOME/NO_QUERY",
+      "work": "D4",
+      "education": "D5",
+      "lunch": "D21",
+      "shopping": "D15",
+      "health": "D8",
+      "leisure": "D25",
+      "cafe": "D22",
+      "daycare": "D19"
+    }
+  },
+  "inputs_cambridge_ma": {
+    "data/cambridge_ma/processed/cambridge_osm_pois.csv": {
+      "bytes": 600056,
+      "sha256": "61771283426a001e3659eba3dd5829505451c9809c247504d9913cad7e2ca957"
+    },
+    "data/cambridge_ma/processed/cambridge_population_h3_r9.csv": {
+      "bytes": 12501,
+      "sha256": "e8246e8591d49e589bce71326321f1cfc45bc5c147eb64de803380a5f2f5dbca"
+    }
+  },
+  "source_sha256": {
+    "experiments/08_candidate_ablation.py": "8c89bb3371b36a556bf5f328816d66effa64c797cc67cb521f728b91c2caedfc",
+    "src/h3uab/benchmarking.py": "3aac0dfd2361a46ed602311c97b1d776112d4c1b9adfc3adb90d832c9b753857",
+    "src/h3uab/config.py": "ea95769c96870fc84172b3392b00746e690f1a94ef9bfaa8e4d731e24ccc9656",
+    "src/h3uab/continuous_indexed_backend.py": "58a462543c33921af65f0b35b350ba5922c9bcef9ac9ea773880487ec7b6f594",
+    "src/h3uab/h3_backend.py": "342e1100eb1e3f652898c20388fe1e32b924369ec44b255afa03814224cf9eb1",
+    "src/h3uab/static_city.py": "b4bb1e9e42c4872cc462924994cf72f057cdd4476d1ae9202467c93c713bdafd"
+  }
+}

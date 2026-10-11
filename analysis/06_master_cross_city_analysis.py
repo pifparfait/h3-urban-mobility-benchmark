@@ -519,7 +519,7 @@ def plot_temporal_speedup(
         "H3 temporal-loop speedup over Continuous (×)"
     )
     ax.set_title(
-        "End-to-End Temporal Decision Performance"
+        "Temporal decision-loop performance"
     )
     ax.legend()
     ax.grid(
@@ -557,33 +557,23 @@ def plot_break_even(
 
     fig, ax = plt.subplots(figsize=(8.6, 5.2))
 
-    plot_df = e2e_table[
-        e2e_table["n_agents"]
-        == max(E2E_TARGET_POPULATIONS)
-    ].copy()
+    target_n = max(E2E_TARGET_POPULATIONS)
 
-    # If 100K is unavailable for a city, fall back to its largest available N.
     rows = []
     for city_key, spec in CITY_SPECS.items():
-        sub = e2e_table[
-            e2e_table["city"] == spec["label"]
-        ].sort_values("n_agents")
-
-        if sub.empty:
-            continue
-
-        preferred = sub[
-            sub["n_agents"]
-            == max(E2E_TARGET_POPULATIONS)
+        selected = e2e_table[
+            (e2e_table["city"] == spec["label"])
+            & (e2e_table["n_agents"] == target_n)
         ]
-        rows.append(
-            preferred.iloc[0]
-            if not preferred.empty
-            else sub.iloc[-1]
-        )
 
-    if not rows:
-        return None
+        if len(selected) != 1:
+            raise ValueError(
+                f"FIG_CC6 requires exactly one row for "
+                f"{spec['label']} at N={target_n:,}; "
+                f"found {len(selected)}"
+            )
+
+        rows.append(selected.iloc[0])
 
     plot_df = pd.DataFrame(rows)
 
@@ -622,7 +612,7 @@ def plot_break_even(
         "Break-even spatial decisions (log scale)"
     )
     ax.set_title(
-        "Amortization of Hierarchical Spatial Preparation"
+        "Amortization of spatial preparation (100,000 agents)"
     )
     ax.legend()
     ax.grid(

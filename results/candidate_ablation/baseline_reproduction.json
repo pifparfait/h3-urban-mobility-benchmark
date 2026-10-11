@@ -1,0 +1,17 @@
+{
+  "city": "cambridge_ma",
+  "command": "python3 experiments/01_architecture_benchmark.py --city cambridge_ma --agents 10000 --queries 10000 --repeats 3",
+  "operation": "full_agent_decision",
+  "n_agents": 10000,
+  "n_queries": 10000,
+  "repeats": 3,
+  "continuous_median_us": 63.070581,
+  "h3_median_us": 23.233317,
+  "speedup_ratio_of_medians": 2.714661,
+  "manuscript_one_million_reference": {
+    "continuous_us": 62.96,
+    "h3_us": 22.01,
+    "speedup": 2.86
+  },
+  "note": "Original benchmark path was run before the ablation timing and its tracked output files were restored afterward. Population/query size differs from the manuscript one-million case; qualitative ordering is consistent."
+}
