@@ -107,6 +107,10 @@ class ContinuousIndexedBackend(SpatialBackend):
         agent_lng,
         layer_code,
     ):
+        trace = getattr(self, "trace", None)
+        if trace is not None:
+            trace.clear()
+            trace.update(route="none", balltree_returned=0, within_radius=0, scored=0)
         ids = self.by_layer.get(
             layer_code
         )
@@ -160,6 +164,8 @@ class ContinuousIndexedBackend(SpatialBackend):
             - tq
         )
 
+        if trace is not None:
+            trace["balltree_returned"] = int(local_idx.size)
         if local_idx.size == 0:
             return SpatialDecision(
                 -1,
@@ -205,6 +211,8 @@ class ContinuousIndexedBackend(SpatialBackend):
             keep
         ]
 
+        if trace is not None:
+            trace["within_radius"] = int(candidates.size)
         self.profile.distance_time_s += (
             time.perf_counter()
             - td
@@ -236,6 +244,9 @@ class ContinuousIndexedBackend(SpatialBackend):
 
         t_dec = time.perf_counter()
 
+        if trace is not None:
+            trace["scored"] = int(candidates.size)
+            trace["route"] = "radius_search"
         scores = destination_score(
             distances,
             attractiveness,

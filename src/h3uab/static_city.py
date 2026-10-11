@@ -499,6 +499,7 @@ def get_h10_candidate_poi_ids(
     h12_cell,
     layer_code,
     cfg,
+    diagnostics=None,
 ):
     """
     Return a bounded candidate tuple from H3@10 buckets around the agent.
@@ -524,8 +525,13 @@ def get_h10_candidate_poi_ids(
     candidate_ids = []
 
     index = city.poi_index_h10
+    if diagnostics is not None:
+        diagnostics["buckets_inspected"] = 0
+        diagnostics["raw_ids"] = 0
 
     for cell in cells:
+        if diagnostics is not None:
+            diagnostics["buckets_inspected"] += 1
         value = None
 
         if (
@@ -580,6 +586,8 @@ def get_h10_candidate_poi_ids(
             except TypeError:
                 pass
 
+        if diagnostics is not None:
+            diagnostics["raw_ids"] = len(candidate_ids)
         if len(
             candidate_ids
         ) >= int(
@@ -588,10 +596,12 @@ def get_h10_candidate_poi_ids(
             break
 
     if not candidate_ids:
+        if diagnostics is not None:
+            diagnostics["retained_ids"] = 0
         return ()
 
     # Stable deduplication + hard cap.
-    return tuple(
+    result = tuple(
         dict.fromkeys(
             candidate_ids
         )
@@ -601,6 +611,9 @@ def get_h10_candidate_poi_ids(
             cfg.destination_refinement.max_candidates
         )
     ]
+    if diagnostics is not None:
+        diagnostics["retained_ids"] = len(result)
+    return result
 
 
 def get_h9_fallback_candidate_poi_ids(
@@ -608,6 +621,7 @@ def get_h9_fallback_candidate_poi_ids(
     h12_cell,
     layer_code,
     cfg,
+    diagnostics=None,
 ):
     """
     Fallback for H9 missing states.
@@ -628,8 +642,13 @@ def get_h9_fallback_candidate_poi_ids(
     )
 
     ids = []
+    if diagnostics is not None:
+        diagnostics["cells_inspected"] = 0
+        diagnostics["cells_with_poi"] = 0
 
     for cell in cells:
+        if diagnostics is not None:
+            diagnostics["cells_inspected"] += 1
         state = city.accessibility_h9.get(
             (
                 cell,
@@ -663,6 +682,8 @@ def get_h9_fallback_candidate_poi_ids(
                     state.best_poi_id
                 )
             )
+            if diagnostics is not None:
+                diagnostics["cells_with_poi"] += 1
 
         if len(
             ids
@@ -671,8 +692,12 @@ def get_h9_fallback_candidate_poi_ids(
         ):
             break
 
-    return tuple(
+    result = tuple(
         dict.fromkeys(
             ids
         )
     )
+    if diagnostics is not None:
+        diagnostics["raw_ids"] = len(ids)
+        diagnostics["retained_ids"] = len(result)
+    return result

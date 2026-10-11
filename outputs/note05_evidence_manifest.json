@@ -1,0 +1,673 @@
+{
+  "study": "Note 05",
+  "baseline_commit": "0d284de421fb8cf683294e9be0c5043ec787299e",
+  "policy": "Original traces retained outside Git; verified by SHA-256",
+  "files": [
+    {
+      "path": "outputs/note05_counterfactual/cambridge/A_by_G_effective.csv",
+      "bytes": 36,
+      "sha256": "2c0b41d550788938f3565d70cb81b3f71f8987083c9da03cafef3e1184ce7a9a",
+      "stored_in_git": true
+    },
+    {
+      "path": "outputs/note05_counterfactual/cambridge/per_decision.csv",
+      "bytes": 3825944,
+      "sha256": "9f49cad84961b7be69e5238a9d15873b3d4e5353630fdb71c21ea91f481eb56b",
+      "stored_in_git": true
+    },
+    {
+      "path": "outputs/note05_counterfactual/cambridge/summary.json",
+      "bytes": 1169,
+      "sha256": "c8e67141a17bdbab680b32f00e68f1bbe55655a73a56afb7d094fffc52bec93c",
+      "stored_in_git": true
+    },
+    {
+      "path": "outputs/note05_counterfactual/madrid/A_by_G_effective.csv",
+      "bytes": 42,
+      "sha256": "c60c81aa2da2f2c1307642cf07fa5cf05742ed13b050e81fd139a1cc161fa1fe",
+      "stored_in_git": true
+    },
+    {
+      "path": "outputs/note05_counterfactual/madrid/per_decision.csv",
+      "bytes": 5126967,
+      "sha256": "244d9c9525da683045eb5ccd5e26aaf6cf8b33f201513c225eb5490b5f094a73",
+      "stored_in_git": true
+    },
+    {
+      "path": "outputs/note05_counterfactual/madrid/summary.json",
+      "bytes": 1387,
+      "sha256": "0f2c1102d17bdd5e556d42de63e75941b34f0bdfdb0a7d7c46ecb5f1479d9668",
+      "stored_in_git": true
+    },
+    {
+      "path": "outputs/note05_counterfactual/nyc/A_by_G_effective.csv",
+      "bytes": 39,
+      "sha256": "de1888ffe5d2168bc06176153c164194ce5002ac758e106aee660ac74c91c6aa",
+      "stored_in_git": true
+    },
+    {
+      "path": "outputs/note05_counterfactual/nyc/per_decision.csv",
+      "bytes": 3458968,
+      "sha256": "db30a74b95c5a3ccaa87f76c8e6b2ce126f3743366a5048f3578ece7a38b775f",
+      "stored_in_git": true
+    },
+    {
+      "path": "outputs/note05_counterfactual/nyc/summary.json",
+      "bytes": 1380,
+      "sha256": "fbe9973d6ae2bc8d2b85e8006261b23aca3681002464e2601f36712fc5134bf0",
+      "stored_in_git": true
+    },
+    {
+      "path": "outputs/note05_continuous_attribution/routes_global_and_step1.csv",
+      "bytes": 567,
+      "sha256": "cabd4c7e20b3608129c84b5e4a68d12def6898f59f035f871f1e7758d06b564e",
+      "stored_in_git": true
+    },
+    {
+      "path": "outputs/note05_continuous_attribution/step1_route_agreement.csv",
+      "bytes": 596,
+      "sha256": "6ef481beb8f1f9ebb244c5e28b2b259f280c085c05b2211bec28df3143560ace",
+      "stored_in_git": true
+    },
+    {
+      "path": "outputs/note05_continuous_attribution/summary.json",
+      "bytes": 5300,
+      "sha256": "a62c3eb28c30d469ad64952ed78f7f8fbec8e5e3472f235f6523f505972ba05d",
+      "stored_in_git": true
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_plain/diagnostics_n10000/destination_separations.csv",
+      "bytes": 486447,
+      "sha256": "9114d138d69db008d554ec30ca67894379a9be639d95d087d98f31917d93f590",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_plain/diagnostics_n10000/occupancy_H7.csv",
+      "bytes": 623,
+      "sha256": "73c438d07f921f598540701c4c65a1b066b06ec7f3dc7e7feada33244251098b",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_plain/diagnostics_n10000/occupancy_H8.csv",
+      "bytes": 1703,
+      "sha256": "581bd81c3574c618acb2fd19b99cc8551f89800de5f74db3e8a377fe0953b254",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_plain/diagnostics_n10000/occupancy_H9.csv",
+      "bytes": 3690,
+      "sha256": "a14596df00347e7ebaeff58bb470d0e0926f26c4e1b16de30390a8ff83a1d0e7",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_plain/diagnostics_n10000/od_flows_H7.csv",
+      "bytes": 4584,
+      "sha256": "9e95f8c6a277f707f5be6b115ca150c1c0e8cf1ba38e8b6561c2274fd92f738e",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_plain/diagnostics_n10000/od_flows_H8.csv",
+      "bytes": 23238,
+      "sha256": "92345b5d2f31e76ae8f8b99e3ed96e2f1bfb4d3733719817a0c0739cd27a8dc4",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_plain/diagnostics_n10000/od_flows_H9.csv",
+      "bytes": 117685,
+      "sha256": "d54ea0f8dbf76a659e7010a92c77a1a3c7c8c466521772f4dcc44566150e8e92",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_plain/diagnostics_n10000/paired_trip_endpoints.csv",
+      "bytes": 16465515,
+      "sha256": "f5b7cd8c94f633cefe2a264244cb6e23bfcc936a376745b5ae5f8280f1394c27",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_plain/diagnostics_n10000/visit_density_H7.csv",
+      "bytes": 705,
+      "sha256": "ca5a9416619a72645c6ff1e9bd26b76a42b72f4e424db452d43b3c6f5f731942",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_plain/diagnostics_n10000/visit_density_H8.csv",
+      "bytes": 2351,
+      "sha256": "2008ebe4adcb2dd0303f53f59910bb9fe4a98f968f16e85f1f897fdd862ccaba",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_plain/diagnostics_n10000/visit_density_H9.csv",
+      "bytes": 8786,
+      "sha256": "4d250abe74760014d75bceed8fa1988bbc8edea837eb6390f2d1961be0f802e5",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_plain/diagnostics_n10000/work_od_flows_H7.csv",
+      "bytes": 3690,
+      "sha256": "4e587fb96741faa796a56c6c3ed11578df65170d4ab32c6361b6c9c3055e043f",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_plain/diagnostics_n10000/work_od_flows_H8.csv",
+      "bytes": 14406,
+      "sha256": "8619e3f5d846dfc9e2c16aee8dc2f686adb3ea3602e37fda55550d8f89d44df4",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_plain/diagnostics_n10000/work_od_flows_H9.csv",
+      "bytes": 48833,
+      "sha256": "83c5cdf8eb7b9298444041510b3eba731fc7a5e143e94e85c750bdaeed086e9f",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_plain/environment.json",
+      "bytes": 456,
+      "sha256": "370b088ae1c979f5c7c5200074ff8be1f812ebe933850af9c61e21214155124e",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_plain/urban_fidelity_n10000.csv",
+      "bytes": 1341,
+      "sha256": "e204233bd9038f06dd8db373a4569439a7e05278cf4a6bce0611e11fb57241e2",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_traced/diagnostics_n10000/destination_separations.csv",
+      "bytes": 486447,
+      "sha256": "9114d138d69db008d554ec30ca67894379a9be639d95d087d98f31917d93f590",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_traced/diagnostics_n10000/occupancy_H7.csv",
+      "bytes": 623,
+      "sha256": "73c438d07f921f598540701c4c65a1b066b06ec7f3dc7e7feada33244251098b",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_traced/diagnostics_n10000/occupancy_H8.csv",
+      "bytes": 1703,
+      "sha256": "581bd81c3574c618acb2fd19b99cc8551f89800de5f74db3e8a377fe0953b254",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_traced/diagnostics_n10000/occupancy_H9.csv",
+      "bytes": 3690,
+      "sha256": "a14596df00347e7ebaeff58bb470d0e0926f26c4e1b16de30390a8ff83a1d0e7",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_traced/diagnostics_n10000/od_flows_H7.csv",
+      "bytes": 4584,
+      "sha256": "9e95f8c6a277f707f5be6b115ca150c1c0e8cf1ba38e8b6561c2274fd92f738e",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_traced/diagnostics_n10000/od_flows_H8.csv",
+      "bytes": 23238,
+      "sha256": "92345b5d2f31e76ae8f8b99e3ed96e2f1bfb4d3733719817a0c0739cd27a8dc4",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_traced/diagnostics_n10000/od_flows_H9.csv",
+      "bytes": 117685,
+      "sha256": "d54ea0f8dbf76a659e7010a92c77a1a3c7c8c466521772f4dcc44566150e8e92",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_traced/diagnostics_n10000/paired_trip_endpoints.csv",
+      "bytes": 16465515,
+      "sha256": "f5b7cd8c94f633cefe2a264244cb6e23bfcc936a376745b5ae5f8280f1394c27",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_traced/diagnostics_n10000/visit_density_H7.csv",
+      "bytes": 705,
+      "sha256": "ca5a9416619a72645c6ff1e9bd26b76a42b72f4e424db452d43b3c6f5f731942",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_traced/diagnostics_n10000/visit_density_H8.csv",
+      "bytes": 2351,
+      "sha256": "2008ebe4adcb2dd0303f53f59910bb9fe4a98f968f16e85f1f897fdd862ccaba",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_traced/diagnostics_n10000/visit_density_H9.csv",
+      "bytes": 8786,
+      "sha256": "4d250abe74760014d75bceed8fa1988bbc8edea837eb6390f2d1961be0f802e5",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_traced/diagnostics_n10000/work_od_flows_H7.csv",
+      "bytes": 3690,
+      "sha256": "4e587fb96741faa796a56c6c3ed11578df65170d4ab32c6361b6c9c3055e043f",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_traced/diagnostics_n10000/work_od_flows_H8.csv",
+      "bytes": 14406,
+      "sha256": "8619e3f5d846dfc9e2c16aee8dc2f686adb3ea3602e37fda55550d8f89d44df4",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_traced/diagnostics_n10000/work_od_flows_H9.csv",
+      "bytes": 48833,
+      "sha256": "83c5cdf8eb7b9298444041510b3eba731fc7a5e143e94e85c750bdaeed086e9f",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_traced/environment.json",
+      "bytes": 455,
+      "sha256": "b6b876fd29733c2f3e73b6553126435db8c44fb4197c464780f6f29e811b4236",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_traced/note05_trace.csv",
+      "bytes": 7083408,
+      "sha256": "ead8c9a366b3bce86f1712885889907ca3d68015589b70dccb4e0ec16e539f15",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/cambridge_traced/urban_fidelity_n10000.csv",
+      "bytes": 1340,
+      "sha256": "b24ed8bde30aab8c5fd307011ef603894998fb5fc1208bf684e73dea8861fa18",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_plain/diagnostics_n10000/destination_separations.csv",
+      "bytes": 458595,
+      "sha256": "e862ec808e1af95c782d313ef83d0d1c187e8f3b7529f883306b0a398e522230",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_plain/diagnostics_n10000/occupancy_H7.csv",
+      "bytes": 3339,
+      "sha256": "3af65e728e0a54df9a243be461dae2a5ebdb84e000a00eb04bc5851108356a21",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_plain/diagnostics_n10000/occupancy_H8.csv",
+      "bytes": 14775,
+      "sha256": "0b68981a028289cd81ed39603befcbc9b242ead06f7dc417b356a9b47381dc65",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_plain/diagnostics_n10000/occupancy_H9.csv",
+      "bytes": 57476,
+      "sha256": "fe537279fd7f157c5fa98ba741141295710ea850db1e0c3e939863f4fcbca3fc",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_plain/diagnostics_n10000/od_flows_H7.csv",
+      "bytes": 32902,
+      "sha256": "5be41527c82d106f23260177c08af415a2f20eca4c8a79698b6cc3cc9a81a118",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_plain/diagnostics_n10000/od_flows_H8.csv",
+      "bytes": 172748,
+      "sha256": "02a97027814caca8463d0d77c547942f3c7beacf92b6c77c191b585601bb322e",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_plain/diagnostics_n10000/od_flows_H9.csv",
+      "bytes": 759496,
+      "sha256": "37b3545f05495ba8e6a6aa59ebb1b6c24c1892d819b0f3e410b386d4440a6d0c",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_plain/diagnostics_n10000/paired_trip_endpoints.csv",
+      "bytes": 16783024,
+      "sha256": "847bfc2f5d51a32ee387ec1b290237934ae6650de56eaae9a13f54eced9cacf0",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_plain/diagnostics_n10000/visit_density_H7.csv",
+      "bytes": 3711,
+      "sha256": "69884ab5ed10695b9b549f29c54bd1afb2b6a788a7860ce45dbf6f3c5c61223a",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_plain/diagnostics_n10000/visit_density_H8.csv",
+      "bytes": 17891,
+      "sha256": "d60126f7e84cbf135ef614c59dc6fb3555b1a33ec26bb188179967288db20e22",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_plain/diagnostics_n10000/visit_density_H9.csv",
+      "bytes": 83286,
+      "sha256": "233c0dd26bef76b93ccd2ab89f7d741ff85947453dd1a3a8c27c04a2a906f9f7",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_plain/diagnostics_n10000/work_od_flows_H7.csv",
+      "bytes": 26242,
+      "sha256": "3bca05073ed3fae5c8e2cfae5bda0c0b6f7fc3c3e91e4a3a185f107c6318f074",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_plain/diagnostics_n10000/work_od_flows_H8.csv",
+      "bytes": 103069,
+      "sha256": "dfedb20861cab407b13ac92edfdb0ab99c97cf2e34cc4d268a73f91ccdd40baf",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_plain/diagnostics_n10000/work_od_flows_H9.csv",
+      "bytes": 353388,
+      "sha256": "eb0e01be217ddea4e19541f7f48bd4d1abeaa3572d0778f6670bb218e4254d9f",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_plain/environment.json",
+      "bytes": 450,
+      "sha256": "768ef46b94a17a6390b60e92e4bdd2a0662f86979682cbfd809cc5a8126e3451",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_plain/urban_fidelity_n10000.csv",
+      "bytes": 1303,
+      "sha256": "847256044a058afbaa2359ada5edb6f9da7e09dd05f4463d4d86ba4959af3430",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_traced/diagnostics_n10000/destination_separations.csv",
+      "bytes": 458595,
+      "sha256": "e862ec808e1af95c782d313ef83d0d1c187e8f3b7529f883306b0a398e522230",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_traced/diagnostics_n10000/occupancy_H7.csv",
+      "bytes": 3339,
+      "sha256": "3af65e728e0a54df9a243be461dae2a5ebdb84e000a00eb04bc5851108356a21",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_traced/diagnostics_n10000/occupancy_H8.csv",
+      "bytes": 14775,
+      "sha256": "0b68981a028289cd81ed39603befcbc9b242ead06f7dc417b356a9b47381dc65",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_traced/diagnostics_n10000/occupancy_H9.csv",
+      "bytes": 57476,
+      "sha256": "fe537279fd7f157c5fa98ba741141295710ea850db1e0c3e939863f4fcbca3fc",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_traced/diagnostics_n10000/od_flows_H7.csv",
+      "bytes": 32902,
+      "sha256": "5be41527c82d106f23260177c08af415a2f20eca4c8a79698b6cc3cc9a81a118",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_traced/diagnostics_n10000/od_flows_H8.csv",
+      "bytes": 172748,
+      "sha256": "02a97027814caca8463d0d77c547942f3c7beacf92b6c77c191b585601bb322e",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_traced/diagnostics_n10000/od_flows_H9.csv",
+      "bytes": 759496,
+      "sha256": "37b3545f05495ba8e6a6aa59ebb1b6c24c1892d819b0f3e410b386d4440a6d0c",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_traced/diagnostics_n10000/paired_trip_endpoints.csv",
+      "bytes": 16783024,
+      "sha256": "847bfc2f5d51a32ee387ec1b290237934ae6650de56eaae9a13f54eced9cacf0",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_traced/diagnostics_n10000/visit_density_H7.csv",
+      "bytes": 3711,
+      "sha256": "69884ab5ed10695b9b549f29c54bd1afb2b6a788a7860ce45dbf6f3c5c61223a",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_traced/diagnostics_n10000/visit_density_H8.csv",
+      "bytes": 17891,
+      "sha256": "d60126f7e84cbf135ef614c59dc6fb3555b1a33ec26bb188179967288db20e22",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_traced/diagnostics_n10000/visit_density_H9.csv",
+      "bytes": 83286,
+      "sha256": "233c0dd26bef76b93ccd2ab89f7d741ff85947453dd1a3a8c27c04a2a906f9f7",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_traced/diagnostics_n10000/work_od_flows_H7.csv",
+      "bytes": 26242,
+      "sha256": "3bca05073ed3fae5c8e2cfae5bda0c0b6f7fc3c3e91e4a3a185f107c6318f074",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_traced/diagnostics_n10000/work_od_flows_H8.csv",
+      "bytes": 103069,
+      "sha256": "dfedb20861cab407b13ac92edfdb0ab99c97cf2e34cc4d268a73f91ccdd40baf",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_traced/diagnostics_n10000/work_od_flows_H9.csv",
+      "bytes": 353388,
+      "sha256": "eb0e01be217ddea4e19541f7f48bd4d1abeaa3572d0778f6670bb218e4254d9f",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_traced/environment.json",
+      "bytes": 449,
+      "sha256": "2100eb1baa79b55a0b44696febca844cedc81c888eba2e6986052d3ae79fdd0a",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_traced/note05_trace.csv",
+      "bytes": 7219628,
+      "sha256": "3d8a981518385c9060b674b744193107dd693ac04db1e9acc774424a463fb0d0",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/madrid_traced/urban_fidelity_n10000.csv",
+      "bytes": 1305,
+      "sha256": "07dcf1e25e5ebde263c62a70d023be0da4212ca8cd5e4281c9a26900cc6f4158",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_plain/diagnostics_n10000/destination_separations.csv",
+      "bytes": 444121,
+      "sha256": "a359c4b5c4e97f9ad48b0e1277d054c45719951ac3762f94baa39e80596921bf",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_plain/diagnostics_n10000/occupancy_H7.csv",
+      "bytes": 10855,
+      "sha256": "3cd011b22ed60c53f2fcde9a3ef922c699cf691f89436083d5350354f5591a73",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_plain/diagnostics_n10000/occupancy_H8.csv",
+      "bytes": 39027,
+      "sha256": "5c1c566ea541b38c26654610334632ee351c76ccc572c3df3b2a5e3357e40ee6",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_plain/diagnostics_n10000/occupancy_H9.csv",
+      "bytes": 77295,
+      "sha256": "31790307ba2561b29a876b9560ea735e1a657056857b838831ea7fcce0dc4155",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_plain/diagnostics_n10000/od_flows_H7.csv",
+      "bytes": 100855,
+      "sha256": "11c1dd57969af2ae3e68f4b3e775736f62418b55c09f2c8ab549e683cb0d7f2c",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_plain/diagnostics_n10000/od_flows_H8.csv",
+      "bytes": 462114,
+      "sha256": "9caac5d39c00453b8757a19929bacdd690920b68de3cd55a8a31421a91c4e6c5",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_plain/diagnostics_n10000/od_flows_H9.csv",
+      "bytes": 1453906,
+      "sha256": "d85928117042715013bebf16abddc94a9291f33c1d3fd306252455a2b2a40a3d",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_plain/diagnostics_n10000/paired_trip_endpoints.csv",
+      "bytes": 16662164,
+      "sha256": "1ffdb61b4b58ea9f12fbb5f37524bc98aa9ba72d6ec1e7d595a549e0eabcb492",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_plain/diagnostics_n10000/visit_density_H7.csv",
+      "bytes": 12213,
+      "sha256": "3117f5eaa1dcd34a6f2eda224715bce25075efa53aa6d0f2f582226b5e03c2d5",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_plain/diagnostics_n10000/visit_density_H8.csv",
+      "bytes": 57909,
+      "sha256": "1453ff3eef9ff1cef33ae094e14b136dbaf0796c83b091609bd508cffaedb786",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_plain/diagnostics_n10000/visit_density_H9.csv",
+      "bytes": 199708,
+      "sha256": "2808a83cdc8fbe8491ec7b9512f432c62349e2334e72b9b23549fe44c90e2eac",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_plain/diagnostics_n10000/work_od_flows_H7.csv",
+      "bytes": 61899,
+      "sha256": "6f8e42c1d0cc89afeefba28e10f8bea951747c5ce87547a5d8e069c49ed4715b",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_plain/diagnostics_n10000/work_od_flows_H8.csv",
+      "bytes": 210821,
+      "sha256": "b1d8f9f6b6cd6ec102e6466b14cf10b83dff6760c0cb9939bce63b90f76529a8",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_plain/diagnostics_n10000/work_od_flows_H9.csv",
+      "bytes": 494013,
+      "sha256": "47fc91f4108fdcdf4c82db230f1e4a0a00d2d503f225a18acc278123ecc621ca",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_plain/environment.json",
+      "bytes": 455,
+      "sha256": "83ced4e55e936f6de895733e139d2368c9af437e536247b98c62c481a37bc826",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_plain/urban_fidelity_n10000.csv",
+      "bytes": 1297,
+      "sha256": "d3e5339b7fbbfa2bdedd73ed805633a18c494eb1a8abe03252ae2d8177f6b6a0",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_traced/diagnostics_n10000/destination_separations.csv",
+      "bytes": 444121,
+      "sha256": "a359c4b5c4e97f9ad48b0e1277d054c45719951ac3762f94baa39e80596921bf",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_traced/diagnostics_n10000/occupancy_H7.csv",
+      "bytes": 10855,
+      "sha256": "3cd011b22ed60c53f2fcde9a3ef922c699cf691f89436083d5350354f5591a73",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_traced/diagnostics_n10000/occupancy_H8.csv",
+      "bytes": 39027,
+      "sha256": "5c1c566ea541b38c26654610334632ee351c76ccc572c3df3b2a5e3357e40ee6",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_traced/diagnostics_n10000/occupancy_H9.csv",
+      "bytes": 77295,
+      "sha256": "31790307ba2561b29a876b9560ea735e1a657056857b838831ea7fcce0dc4155",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_traced/diagnostics_n10000/od_flows_H7.csv",
+      "bytes": 100855,
+      "sha256": "11c1dd57969af2ae3e68f4b3e775736f62418b55c09f2c8ab549e683cb0d7f2c",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_traced/diagnostics_n10000/od_flows_H8.csv",
+      "bytes": 462114,
+      "sha256": "9caac5d39c00453b8757a19929bacdd690920b68de3cd55a8a31421a91c4e6c5",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_traced/diagnostics_n10000/od_flows_H9.csv",
+      "bytes": 1453906,
+      "sha256": "d85928117042715013bebf16abddc94a9291f33c1d3fd306252455a2b2a40a3d",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_traced/diagnostics_n10000/paired_trip_endpoints.csv",
+      "bytes": 16662164,
+      "sha256": "1ffdb61b4b58ea9f12fbb5f37524bc98aa9ba72d6ec1e7d595a549e0eabcb492",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_traced/diagnostics_n10000/visit_density_H7.csv",
+      "bytes": 12213,
+      "sha256": "3117f5eaa1dcd34a6f2eda224715bce25075efa53aa6d0f2f582226b5e03c2d5",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_traced/diagnostics_n10000/visit_density_H8.csv",
+      "bytes": 57909,
+      "sha256": "1453ff3eef9ff1cef33ae094e14b136dbaf0796c83b091609bd508cffaedb786",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_traced/diagnostics_n10000/visit_density_H9.csv",
+      "bytes": 199708,
+      "sha256": "2808a83cdc8fbe8491ec7b9512f432c62349e2334e72b9b23549fe44c90e2eac",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_traced/diagnostics_n10000/work_od_flows_H7.csv",
+      "bytes": 61899,
+      "sha256": "6f8e42c1d0cc89afeefba28e10f8bea951747c5ce87547a5d8e069c49ed4715b",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_traced/diagnostics_n10000/work_od_flows_H8.csv",
+      "bytes": 210821,
+      "sha256": "b1d8f9f6b6cd6ec102e6466b14cf10b83dff6760c0cb9939bce63b90f76529a8",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_traced/diagnostics_n10000/work_od_flows_H9.csv",
+      "bytes": 494013,
+      "sha256": "47fc91f4108fdcdf4c82db230f1e4a0a00d2d503f225a18acc278123ecc621ca",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_traced/environment.json",
+      "bytes": 454,
+      "sha256": "2f2695aa93e898d4f12dfb0d2061a99b42f3e7f70c88640128efe4f710b183d2",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_traced/note05_trace.csv",
+      "bytes": 7224557,
+      "sha256": "7a1f1c59bb24e014677fbbbac46c473ea10dd9beb40b1280833af3cf58fbb629",
+      "stored_in_git": false
+    },
+    {
+      "path": "outputs/note05_paired_trace/nyc_traced/urban_fidelity_n10000.csv",
+      "bytes": 1293,
+      "sha256": "0030361f0afffb2fd9b5a3aaac3ea50f3d7edd27dc73451d91984ce5b2fd44a2",
+      "stored_in_git": false
+    }
+  ]
+}

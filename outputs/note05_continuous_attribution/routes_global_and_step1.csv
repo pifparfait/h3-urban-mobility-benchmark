@@ -1,0 +1,13 @@
+route,global_n,global_pct,step1_n,step1_pct,city
+local_h10,41862,83.724,6118,61.18,madrid
+cached_best_h9,8053,16.106,3837,38.37,madrid
+bounded_fallback_h9,66,0.132,34,0.34,madrid
+none,19,0.038,11,0.11,madrid
+local_h10,32718,65.436,4027,40.27,cambridge_ma
+cached_best_h9,17280,34.56,5971,59.71,cambridge_ma
+bounded_fallback_h9,1,0.002,1,0.01,cambridge_ma
+none,1,0.002,1,0.01,cambridge_ma
+local_h10,28390,56.78,2998,29.98,new_york_ny
+cached_best_h9,21256,42.512,6824,68.24,new_york_ny
+bounded_fallback_h9,13,0.026,5,0.05,new_york_ny
+none,341,0.682,173,1.73,new_york_ny

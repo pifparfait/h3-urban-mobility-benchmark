@@ -1,0 +1,13 @@
+route,decisions,agreement_n,agreement_pct,city
+local_h10,6118,4608,75.31873161163779,madrid
+cached_best_h9,3837,2697,70.28928850664582,madrid
+bounded_fallback_h9,34,27,79.41176470588235,madrid
+none,11,9,81.81818181818181,madrid
+local_h10,4027,2827,70.20114228954557,cambridge_ma
+cached_best_h9,5971,4284,71.74677608440797,cambridge_ma
+bounded_fallback_h9,1,1,100.0,cambridge_ma
+none,1,1,100.0,cambridge_ma
+local_h10,2998,2193,73.14876584389593,new_york_ny
+cached_best_h9,6824,5147,75.42497069167644,new_york_ny
+bounded_fallback_h9,5,5,100.0,new_york_ny
+none,173,172,99.42196531791907,new_york_ny

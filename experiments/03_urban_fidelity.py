@@ -2,6 +2,12 @@
 from __future__ import annotations
 
 import argparse
+import csv
+import json
+import platform
+import os
+import hashlib
+import importlib.metadata
 from pathlib import Path
 import sys
 
@@ -72,7 +78,19 @@ def main():
         help="Number of synthetic agents.",
     )
 
+    ap.add_argument("--note05-output", type=Path, default=None,
+                    help="Independent output directory; must not be the published directory")
+    ap.add_argument("--diagnostic-trace", action="store_true")
     args = ap.parse_args()
+    if args.diagnostic_trace and args.note05_output is None:
+        ap.error("--diagnostic-trace requires --note05-output")
+    if args.note05_output is not None:
+        published = _output_dir_for_city(args.city).resolve()
+        requested = args.note05_output.resolve()
+        if requested == published or published in requested.parents:
+            ap.error("Note05 output must be outside published outputs")
+        if requested.exists():
+            ap.error("Note05 output already exists; refusing to overwrite")
 
     cfg = config_for_city(
         args.city,
@@ -191,6 +209,7 @@ def main():
     )
     print()
 
+    trace_rows = [] if args.diagnostic_trace else None
     for step in steps:
         print(
             f"step {step}"
@@ -250,6 +269,9 @@ def main():
                     ),
                 )
 
+                if trace_rows is not None:
+                    continuous.trace = {}
+                    h3_backend.trace = {}
                 decision_c = continuous.decide(
                     aid,
                     old_c[
@@ -272,6 +294,32 @@ def main():
                     layer,
                 )
 
+                if trace_rows is not None:
+                    for backend_name, decision, backend in (
+                        ("continuous", decision_c, continuous),
+                        ("h3", decision_h, h3_backend),
+                    ):
+                        t = backend.trace
+                        trace_rows.append({
+                            "agent_id": aid, "step": int(step),
+                            "backend": backend_name, "route": t.get("route", "none"),
+                            "destination_id": int(decision.destination_id),
+                            "straight_distance_m": float(decision.straight_distance_m),
+                            "scored": int(t.get("scored", 0)),
+                            "balltree_returned": t.get("balltree_returned", ""),
+                            "within_radius": t.get("within_radius", ""),
+                            "h10_raw": t.get("h10", {}).get("raw_ids", ""),
+                            "h10_retained": t.get("h10", {}).get("retained_ids", ""),
+                            "h10_within": t.get("h10", {}).get("within_radius", ""),
+                            "h10_scored": t.get("h10", {}).get("scored", ""),
+                            "h10_buckets": t.get("h10", {}).get("buckets_inspected", ""),
+                            "fallback_cells": t.get("fallback_h9", {}).get("cells_inspected", ""),
+                            "fallback_cells_with_poi": t.get("fallback_h9", {}).get("cells_with_poi", ""),
+                            "fallback_raw": t.get("fallback_h9", {}).get("raw_ids", ""),
+                            "fallback_retained": t.get("fallback_h9", {}).get("retained_ids", ""),
+                            "fallback_within": t.get("fallback_h9", {}).get("within_radius", ""),
+                            "fallback_scored": t.get("fallback_h9", {}).get("scored", ""),
+                        })
                 if (
                     decision_c.destination_id
                     >= 0
@@ -380,9 +428,8 @@ def main():
 
     summary = fidelity.summary()
 
-    output_dir = _output_dir_for_city(
-        cfg.city_name
-    )
+    output_dir = (args.note05_output if args.note05_output is not None
+                  else _output_dir_for_city(cfg.city_name))
 
     output_dir.mkdir(
         parents=True,
@@ -412,6 +459,26 @@ def main():
     fidelity.export_diagnostics(
         diagnostics_dir
     )
+    if args.note05_output is not None:
+        packages = {}
+        for name in ("numpy", "scikit-learn", "h3", "pandas", "scipy"):
+            try:
+                packages[name] = importlib.metadata.version(name)
+            except importlib.metadata.PackageNotFoundError:
+                packages[name] = None
+        meta = {"city": args.city, "seed": cfg.seed, "agents": args.agents,
+                "steps": cfg.n_steps, "radius_m": cfg.search_radius_m,
+                "trace": args.diagnostic_trace, "python": platform.python_version(),
+                "packages": packages, "thread_env": {k: os.environ.get(k) for k in
+                    ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS",
+                     "NUMEXPR_NUM_THREADS", "VECLIB_MAXIMUM_THREADS")}}
+        (output_dir / "environment.json").write_text(json.dumps(meta, indent=2))
+    if trace_rows is not None:
+        trace_path = output_dir / "note05_trace.csv"
+        with trace_path.open("w", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=list(trace_rows[0]) if trace_rows else [])
+            writer.writeheader()
+            writer.writerows(trace_rows)
 
     print()
     print(

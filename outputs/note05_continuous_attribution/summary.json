@@ -1,0 +1,179 @@
+[
+  {
+    "city": "madrid",
+    "input_sha256": {
+      "outputs/note05_paired_trace/madrid_traced/diagnostics_n10000/paired_trip_endpoints.csv": "847bfc2f5d51a32ee387ec1b290237934ae6650de56eaae9a13f54eced9cacf0",
+      "outputs/note05_paired_trace/madrid_traced/note05_trace.csv": "3d8a981518385c9060b674b744193107dd693ac04db1e9acc774424a463fb0d0",
+      "outputs/note05_counterfactual/madrid/per_decision.csv": "244d9c9525da683045eb5ccd5e26aaf6cf8b33f201513c225eb5490b5f094a73"
+    },
+    "decisions": 50000,
+    "shared_origins": 36335,
+    "original_disagreements_shared": 6235,
+    "local_h10_shared": 29573,
+    "A_on_shared": 563,
+    "purpose_layer_mapping": {
+      "1": "D3",
+      "2": "D5",
+      "3": "D21",
+      "4": "D3",
+      "5": "D8",
+      "6": "D25",
+      "7": "D21",
+      "8": "D5"
+    },
+    "variants": {
+      "published": {
+        "agreement_n": 30100,
+        "agreement_pct": 82.84023668639053,
+        "disagreement_n": 6235
+      },
+      "full": {
+        "agreement_n": 30659,
+        "agreement_pct": 84.37869822485207,
+        "disagreement_n": 5676,
+        "changed_on_shared": 563,
+        "recover": 559,
+        "worsen": 0,
+        "neither": 4,
+        "net_gain_n": 559,
+        "delta_shared_pp": 1.5384615384615385,
+        "delta_disagreements_pct": 8.96551724137931
+      },
+      "near24": {
+        "agreement_n": 30631,
+        "agreement_pct": 84.3016375395624,
+        "disagreement_n": 5704,
+        "changed_on_shared": 569,
+        "recover": 543,
+        "worsen": 12,
+        "neither": 14,
+        "net_gain_n": 531,
+        "delta_shared_pp": 1.461400853171873,
+        "delta_disagreements_pct": 8.516439454691259
+      }
+    },
+    "affected_A_full": {
+      "recover": 559,
+      "worsen": 0,
+      "neither": 4
+    }
+  },
+  {
+    "city": "cambridge_ma",
+    "input_sha256": {
+      "outputs/note05_paired_trace/cambridge_traced/diagnostics_n10000/paired_trip_endpoints.csv": "f5b7cd8c94f633cefe2a264244cb6e23bfcc936a376745b5ae5f8280f1394c27",
+      "outputs/note05_paired_trace/cambridge_traced/note05_trace.csv": "ead8c9a366b3bce86f1712885889907ca3d68015589b70dccb4e0ec16e539f15",
+      "outputs/note05_counterfactual/cambridge/per_decision.csv": "9f49cad84961b7be69e5238a9d15873b3d4e5353630fdb71c21ea91f481eb56b"
+    },
+    "decisions": 50000,
+    "shared_origins": 35102,
+    "original_disagreements_shared": 7600,
+    "local_h10_shared": 22036,
+    "A_on_shared": 0,
+    "purpose_layer_mapping": {
+      "1": "D4",
+      "2": "D5",
+      "3": "D21",
+      "4": "D15",
+      "5": "D8",
+      "6": "D25",
+      "7": "D22",
+      "8": "D19"
+    },
+    "variants": {
+      "published": {
+        "agreement_n": 27502,
+        "agreement_pct": 78.34881203350237,
+        "disagreement_n": 7600
+      },
+      "full": {
+        "agreement_n": 27502,
+        "agreement_pct": 78.34881203350237,
+        "disagreement_n": 7600,
+        "changed_on_shared": 0,
+        "recover": 0,
+        "worsen": 0,
+        "neither": 0,
+        "net_gain_n": 0,
+        "delta_shared_pp": 0.0,
+        "delta_disagreements_pct": 0.0
+      },
+      "near24": {
+        "agreement_n": 27502,
+        "agreement_pct": 78.34881203350237,
+        "disagreement_n": 7600,
+        "changed_on_shared": 0,
+        "recover": 0,
+        "worsen": 0,
+        "neither": 0,
+        "net_gain_n": 0,
+        "delta_shared_pp": 0.0,
+        "delta_disagreements_pct": 0.0
+      }
+    },
+    "affected_A_full": {
+      "recover": 0,
+      "worsen": 0,
+      "neither": 0
+    }
+  },
+  {
+    "city": "new_york_ny",
+    "input_sha256": {
+      "outputs/note05_paired_trace/nyc_traced/diagnostics_n10000/paired_trip_endpoints.csv": "1ffdb61b4b58ea9f12fbb5f37524bc98aa9ba72d6ec1e7d595a549e0eabcb492",
+      "outputs/note05_paired_trace/nyc_traced/note05_trace.csv": "7a1f1c59bb24e014677fbbbac46c473ea10dd9beb40b1280833af3cf58fbb629",
+      "outputs/note05_counterfactual/nyc/per_decision.csv": "db30a74b95c5a3ccaa87f76c8e6b2ce126f3743366a5048f3578ece7a38b775f"
+    },
+    "decisions": 50000,
+    "shared_origins": 37137,
+    "original_disagreements_shared": 7207,
+    "local_h10_shared": 19965,
+    "A_on_shared": 42,
+    "purpose_layer_mapping": {
+      "1": "D4",
+      "2": "D5",
+      "3": "D21",
+      "4": "D15",
+      "5": "D8",
+      "6": "D25",
+      "7": "D22",
+      "8": "D19"
+    },
+    "variants": {
+      "published": {
+        "agreement_n": 29930,
+        "agreement_pct": 80.59347820233191,
+        "disagreement_n": 7207
+      },
+      "full": {
+        "agreement_n": 29971,
+        "agreement_pct": 80.70388022726661,
+        "disagreement_n": 7166,
+        "changed_on_shared": 42,
+        "recover": 41,
+        "worsen": 0,
+        "neither": 1,
+        "net_gain_n": 41,
+        "delta_shared_pp": 0.11040202493470123,
+        "delta_disagreements_pct": 0.5688913556264743
+      },
+      "near24": {
+        "agreement_n": 29965,
+        "agreement_pct": 80.68772383337372,
+        "disagreement_n": 7172,
+        "changed_on_shared": 38,
+        "recover": 35,
+        "worsen": 0,
+        "neither": 3,
+        "net_gain_n": 35,
+        "delta_shared_pp": 0.09424563104181813,
+        "delta_disagreements_pct": 0.48563896212016094
+      }
+    },
+    "affected_A_full": {
+      "recover": 41,
+      "worsen": 0,
+      "neither": 1
+    }
+  }
+]

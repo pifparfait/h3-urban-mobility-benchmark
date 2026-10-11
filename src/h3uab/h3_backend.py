@@ -114,7 +114,11 @@ class MultiLayerH3Backend(
         candidate_ids,
         agent_lat,
         agent_lng,
+        diagnostics=None,
     ):
+        if diagnostics is not None:
+            diagnostics["within_radius"] = 0
+            diagnostics["scored"] = 0
         if not candidate_ids:
             return None
 
@@ -167,6 +171,9 @@ class MultiLayerH3Backend(
             within
         ]
 
+        if diagnostics is not None:
+            diagnostics["within_radius"] = int(ids.size)
+            diagnostics["scored"] = int(ids.size)
         if ids.size == 0:
             return None
 
@@ -251,6 +258,12 @@ class MultiLayerH3Backend(
             - t_lookup
         )
 
+        trace = getattr(self, "trace", None)
+        if trace is not None:
+            trace.clear()
+            trace["route"] = "none"
+            trace["scored"] = 0
+
         # ----------------------------------------------------------
         # V9.4 H10 local refinement
         # ----------------------------------------------------------
@@ -263,6 +276,7 @@ class MultiLayerH3Backend(
                     h12,
                     layer_code,
                     self.cfg,
+                    diagnostics=trace.setdefault("h10", {}) if trace is not None else None,
                 )
             )
 
@@ -276,6 +290,7 @@ class MultiLayerH3Backend(
                         candidates,
                         agent_lat,
                         agent_lng,
+                        diagnostics=trace["h10"] if trace is not None else None,
                     )
                 )
 
@@ -311,6 +326,9 @@ class MultiLayerH3Backend(
                         else local_count
                     )
 
+                    if trace is not None:
+                        trace["route"] = "local_h10"
+                        trace["scored"] = trace["h10"]["scored"]
                     return SpatialDecision(
                         destination_id=(
                             destination_id
@@ -370,6 +388,8 @@ class MultiLayerH3Backend(
                 - td
             )
 
+            if trace is not None:
+                trace["route"] = "cached_best_h9"
             return SpatialDecision(
                 destination_id=(
                     destination_id
@@ -402,6 +422,7 @@ class MultiLayerH3Backend(
                     h12,
                     layer_code,
                     self.cfg,
+                    diagnostics=trace.setdefault("fallback_h9", {}) if trace is not None else None,
                 )
             )
 
@@ -411,6 +432,7 @@ class MultiLayerH3Backend(
                         fallback_ids,
                         agent_lat,
                         agent_lng,
+                        diagnostics=trace["fallback_h9"] if trace is not None else None,
                     )
                 )
 
@@ -422,6 +444,9 @@ class MultiLayerH3Backend(
                     ) = evaluated
 
                     self.fallback_successes += 1
+                    if trace is not None:
+                        trace["route"] = "bounded_fallback_h9"
+                        trace["scored"] = trace["fallback_h9"]["scored"]
 
                     return SpatialDecision(
                         destination_id=(

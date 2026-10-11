@@ -1,0 +1,61 @@
+{
+  "local_h10": 28390,
+  "T": 334,
+  "T_effective": 332,
+  "rates": {
+    "early_stop": {
+      "count": 269,
+      "fraction_local_h10": 0.009475167312433955
+    },
+    "cap_reached": {
+      "count": 345,
+      "fraction_local_h10": 0.012152166255723846
+    },
+    "effective_exclusion": {
+      "count": 332,
+      "fraction_local_h10": 0.01169425854174005
+    },
+    "A_id": {
+      "count": 81,
+      "fraction_local_h10": 0.0028531172948221203
+    },
+    "A_loss": {
+      "count": 81,
+      "fraction_local_h10": 0.0028531172948221203
+    },
+    "B": {
+      "count": 77,
+      "fraction_local_h10": 0.0027122226135963367
+    },
+    "G": {
+      "count": 28378,
+      "fraction_local_h10": 0.9995773159563226
+    },
+    "tie_only": {
+      "count": 0,
+      "fraction_local_h10": 0.0
+    }
+  },
+  "A_by_G_effective": {
+    "A=False,G=False": 2,
+    "A=False,G=True": 249,
+    "A=True,G=False": 10,
+    "A=True,G=True": 71
+  },
+  "P_G_given_A_id_effective": 0.8765432098765432,
+  "P_G_given_A_loss_effective": 0.8765432098765432,
+  "magnitude_on_A_id": {
+    "loss_equiv_m": {
+      "p50": 18.875130815583674,
+      "p90": 63.1048466062456,
+      "p99": 97.22390496467406,
+      "max": 113.00776398186008
+    },
+    "separation_m": {
+      "p50": 106.59278071223399,
+      "p90": 167.6634266250646,
+      "p99": 269.9884331374195,
+      "max": 269.9884331374195
+    }
+  }
+}
