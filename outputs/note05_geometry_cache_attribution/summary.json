@@ -1,0 +1,125 @@
+[
+  {
+    "city": "madrid",
+    "baseline_commit": "329add9e59fdd6f6660cc8d69b693f50175f65ea",
+    "input_sha256": {
+      "outputs/note05_paired_trace/madrid_traced/diagnostics_n10000/paired_trip_endpoints.csv": "847bfc2f5d51a32ee387ec1b290237934ae6650de56eaae9a13f54eced9cacf0",
+      "outputs/note05_paired_trace/madrid_traced/note05_trace.csv": "3d8a981518385c9060b674b744193107dd693ac04db1e9acc774424a463fb0d0",
+      "outputs/note05_counterfactual/madrid/per_decision.csv": "244d9c9525da683045eb5ccd5e26aaf6cf8b33f201513c225eb5490b5f094a73"
+    },
+    "total_decisions": 50000,
+    "shared_origins": 36335,
+    "local_h10_shared": 29573,
+    "cached_best_h9_shared": 6692,
+    "local_category_all_shared": {
+      "inside_C24": 25330,
+      "geometry_outside_h10_ring": 3684,
+      "truncation_excluded": 559
+    },
+    "local_category_disagreements": {
+      "geometry_outside_h10_ring": 3684,
+      "truncation_excluded": 559
+    },
+    "geometry_continuous_distance_m": {
+      "n": 3684,
+      "p50_m": 210.66628712080265,
+      "p90_m": 289.69533518603873,
+      "p99_m": 383.12492157230645,
+      "max_m": 498.80385083044314
+    },
+    "local_recovered_no_cap": 559,
+    "cache": {
+      "published_agreement": 4713,
+      "continuous_full_R_identity_ties": 0,
+      "continuous_full_R_tied_maxima_decisions": 0,
+      "fixed_agreement": 6686,
+      "refilter_agreement": 6692,
+      "changed_center_to_fixed": 1973,
+      "changed_fixed_to_refilter": 6,
+      "continuous_outside_H8_buckets": 0,
+      "continuous_in_H8_but_outside_center_radius": 2
+    }
+  },
+  {
+    "city": "cambridge_ma",
+    "baseline_commit": "329add9e59fdd6f6660cc8d69b693f50175f65ea",
+    "input_sha256": {
+      "outputs/note05_paired_trace/cambridge_traced/diagnostics_n10000/paired_trip_endpoints.csv": "f5b7cd8c94f633cefe2a264244cb6e23bfcc936a376745b5ae5f8280f1394c27",
+      "outputs/note05_paired_trace/cambridge_traced/note05_trace.csv": "ead8c9a366b3bce86f1712885889907ca3d68015589b70dccb4e0ec16e539f15",
+      "outputs/note05_counterfactual/cambridge/per_decision.csv": "9f49cad84961b7be69e5238a9d15873b3d4e5353630fdb71c21ea91f481eb56b"
+    },
+    "total_decisions": 50000,
+    "shared_origins": 35102,
+    "local_h10_shared": 22036,
+    "cached_best_h9_shared": 13064,
+    "local_category_all_shared": {
+      "inside_C24": 18795,
+      "geometry_outside_h10_ring": 3241
+    },
+    "local_category_disagreements": {
+      "geometry_outside_h10_ring": 3241,
+      "inside_C24": 50
+    },
+    "geometry_continuous_distance_m": {
+      "n": 3241,
+      "p50_m": 221.305435175412,
+      "p90_m": 333.7898051320075,
+      "p99_m": 403.29555650062736,
+      "max_m": 495.9580375575638
+    },
+    "local_recovered_no_cap": 0,
+    "cache": {
+      "published_agreement": 8755,
+      "continuous_full_R_identity_ties": 235,
+      "continuous_full_R_tied_maxima_decisions": 593,
+      "fixed_agreement": 12822,
+      "refilter_agreement": 12829,
+      "changed_center_to_fixed": 4099,
+      "changed_fixed_to_refilter": 7,
+      "continuous_outside_H8_buckets": 0,
+      "continuous_in_H8_but_outside_center_radius": 0
+    }
+  },
+  {
+    "city": "new_york_ny",
+    "baseline_commit": "329add9e59fdd6f6660cc8d69b693f50175f65ea",
+    "input_sha256": {
+      "outputs/note05_paired_trace/nyc_traced/diagnostics_n10000/paired_trip_endpoints.csv": "1ffdb61b4b58ea9f12fbb5f37524bc98aa9ba72d6ec1e7d595a549e0eabcb492",
+      "outputs/note05_paired_trace/nyc_traced/note05_trace.csv": "7a1f1c59bb24e014677fbbbac46c473ea10dd9beb40b1280833af3cf58fbb629",
+      "outputs/note05_counterfactual/nyc/per_decision.csv": "db30a74b95c5a3ccaa87f76c8e6b2ce126f3743366a5048f3578ece7a38b775f"
+    },
+    "total_decisions": 50000,
+    "shared_origins": 37137,
+    "local_h10_shared": 19965,
+    "cached_best_h9_shared": 16856,
+    "local_category_all_shared": {
+      "inside_C24": 16708,
+      "geometry_outside_h10_ring": 3215,
+      "truncation_excluded": 42
+    },
+    "local_category_disagreements": {
+      "geometry_outside_h10_ring": 3215,
+      "inside_C24": 112,
+      "truncation_excluded": 42
+    },
+    "geometry_continuous_distance_m": {
+      "n": 3215,
+      "p50_m": 228.15386680258516,
+      "p90_m": 321.57744833537527,
+      "p99_m": 487.6203947070393,
+      "max_m": 538.1820736271354
+    },
+    "local_recovered_no_cap": 41,
+    "cache": {
+      "published_agreement": 13019,
+      "continuous_full_R_identity_ties": 375,
+      "continuous_full_R_tied_maxima_decisions": 809,
+      "fixed_agreement": 16468,
+      "refilter_agreement": 16481,
+      "changed_center_to_fixed": 3531,
+      "changed_fixed_to_refilter": 13,
+      "continuous_outside_H8_buckets": 0,
+      "continuous_in_H8_but_outside_center_radius": 0
+    }
+  }
+]

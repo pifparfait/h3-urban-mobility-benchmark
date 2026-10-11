@@ -1,0 +1,140 @@
+{
+  "baseline_commit": "329add9e59fdd6f6660cc8d69b693f50175f65ea",
+  "input_sha256": {
+    "outputs/note05_paired_trace/madrid_traced/diagnostics_n10000/paired_trip_endpoints.csv": "847bfc2f5d51a32ee387ec1b290237934ae6650de56eaae9a13f54eced9cacf0",
+    "outputs/note05_paired_trace/madrid_traced/note05_trace.csv": "3d8a981518385c9060b674b744193107dd693ac04db1e9acc774424a463fb0d0",
+    "outputs/note05_paired_trace/cambridge_traced/diagnostics_n10000/paired_trip_endpoints.csv": "f5b7cd8c94f633cefe2a264244cb6e23bfcc936a376745b5ae5f8280f1394c27",
+    "outputs/note05_paired_trace/cambridge_traced/note05_trace.csv": "ead8c9a366b3bce86f1712885889907ca3d68015589b70dccb4e0ec16e539f15",
+    "outputs/note05_paired_trace/nyc_traced/diagnostics_n10000/paired_trip_endpoints.csv": "1ffdb61b4b58ea9f12fbb5f37524bc98aa9ba72d6ec1e7d595a549e0eabcb492",
+    "outputs/note05_paired_trace/nyc_traced/note05_trace.csv": "7a1f1c59bb24e014677fbbbac46c473ea10dd9beb40b1280833af3cf58fbb629"
+  },
+  "cities": [
+    {
+      "city": "madrid",
+      "shared_origins": 36335,
+      "disagreements": 6235,
+      "route_counts": {
+        "bounded_fallback_h9": {
+          "n": 56,
+          "disagreements": 11,
+          "agreements": 45
+        },
+        "cached_best_h9": {
+          "n": 6692,
+          "disagreements": 1979,
+          "agreements": 4713
+        },
+        "local_h10": {
+          "n": 29573,
+          "disagreements": 4243,
+          "agreements": 25330
+        },
+        "none": {
+          "n": 14,
+          "disagreements": 2,
+          "agreements": 12
+        }
+      },
+      "local_disagreement_categories": {
+        "geometry_outside_h10_ring": 3684,
+        "truncation_excluded": 559
+      },
+      "cache_disagreements": 1979,
+      "other_route_disagreements": 13,
+      "tie_candidates": 0,
+      "exact_score_ties": 0,
+      "score_equivalent_1e12": 0,
+      "same_coordinates_and_attractiveness": 0,
+      "source_ids_available": 0,
+      "same_source_ids": 0,
+      "none_step1_total": 11,
+      "none_step1_both_minus_one": 9,
+      "none_step1_other": 2
+    },
+    {
+      "city": "cambridge_ma",
+      "shared_origins": 35102,
+      "disagreements": 7600,
+      "route_counts": {
+        "bounded_fallback_h9": {
+          "n": 1,
+          "disagreements": 0,
+          "agreements": 1
+        },
+        "cached_best_h9": {
+          "n": 13064,
+          "disagreements": 4309,
+          "agreements": 8755
+        },
+        "local_h10": {
+          "n": 22036,
+          "disagreements": 3291,
+          "agreements": 18745
+        },
+        "none": {
+          "n": 1,
+          "disagreements": 0,
+          "agreements": 1
+        }
+      },
+      "local_disagreement_categories": {
+        "geometry_outside_h10_ring": 3241,
+        "inside_C24": 50
+      },
+      "cache_disagreements": 4309,
+      "other_route_disagreements": 0,
+      "tie_candidates": 285,
+      "exact_score_ties": 285,
+      "score_equivalent_1e12": 285,
+      "same_coordinates_and_attractiveness": 285,
+      "source_ids_available": 285,
+      "same_source_ids": 285,
+      "none_step1_total": 1,
+      "none_step1_both_minus_one": 1,
+      "none_step1_other": 0
+    },
+    {
+      "city": "new_york_ny",
+      "shared_origins": 37137,
+      "disagreements": 7207,
+      "route_counts": {
+        "bounded_fallback_h9": {
+          "n": 8,
+          "disagreements": 0,
+          "agreements": 8
+        },
+        "cached_best_h9": {
+          "n": 16856,
+          "disagreements": 3837,
+          "agreements": 13019
+        },
+        "local_h10": {
+          "n": 19965,
+          "disagreements": 3369,
+          "agreements": 16596
+        },
+        "none": {
+          "n": 308,
+          "disagreements": 1,
+          "agreements": 307
+        }
+      },
+      "local_disagreement_categories": {
+        "geometry_outside_h10_ring": 3215,
+        "inside_C24": 112,
+        "truncation_excluded": 42
+      },
+      "cache_disagreements": 3837,
+      "other_route_disagreements": 1,
+      "tie_candidates": 487,
+      "exact_score_ties": 487,
+      "score_equivalent_1e12": 487,
+      "same_coordinates_and_attractiveness": 487,
+      "source_ids_available": 487,
+      "same_source_ids": 487,
+      "none_step1_total": 173,
+      "none_step1_both_minus_one": 172,
+      "none_step1_other": 1
+    }
+  ]
+}
