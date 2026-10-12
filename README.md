@@ -900,4 +900,4 @@ once its final bibliographic information is available.
 
 ## License
 
-Add the repository license here when finalized.
+The original software in this repository is distributed under the MIT License (see [LICENSE](LICENSE)). Third-party datasets and derived data remain subject to their respective upstream licenses and attribution requirements.
