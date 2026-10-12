@@ -1,0 +1,70 @@
+{
+  "accessibility": {
+    "finite_pairs": 50000,
+    "n": 50000,
+    "nmae": 0.07369979755371424,
+    "pearson": 0.9916804390272893
+  },
+  "capture_sha256": "a003b04498badb18c87d843b19f6b9182c27061d776dcb37bc02c2c29d37083c",
+  "city": "new_york_ny",
+  "commit_expected": "a63ee7f766e1b7dc1e71c8fb71024c6d62161df7",
+  "decisions": 50000,
+  "destination_sequence_sha256": "e7bc8ceed6a5099f2b0ce8c6efc9f31ae7390d1328b14e4f2d07081b26534055",
+  "finished_unix": 1791759449.519361,
+  "historical_destination_sequence_sha256": "e7bc8ceed6a5099f2b0ce8c6efc9f31ae7390d1328b14e4f2d07081b26534055",
+  "historical_endpoints_sha256": "1ffdb61b4b58ea9f12fbb5f37524bc98aa9ba72d6ec1e7d595a549e0eabcb492",
+  "historical_summary_sha256": "457ffe293de07c8f0bbea78b2788adbd14b908f4a009f0e40c3c82fc8961c340",
+  "inputs_after": {
+    "poi": {
+      "is_symlink": false,
+      "sha256": "8ee74a765be0aecfaa4862353a5ef2218bb8dfc54da35ae4b79f6535c3abb6e6"
+    },
+    "population": {
+      "is_symlink": false,
+      "sha256": "134674c45656884151f76fc24fe7fd3ff80d7f1b4ee55feed94f0f655734fc99"
+    },
+    "static_cache": {
+      "is_symlink": false,
+      "sha256": "169fa816bdef687e51048647bf22010a6faa5adef05e7699eed7c8ebb9dd601a"
+    }
+  },
+  "inputs_before": {
+    "poi": {
+      "is_symlink": false,
+      "sha256": "8ee74a765be0aecfaa4862353a5ef2218bb8dfc54da35ae4b79f6535c3abb6e6"
+    },
+    "population": {
+      "is_symlink": false,
+      "sha256": "134674c45656884151f76fc24fe7fd3ff80d7f1b4ee55feed94f0f655734fc99"
+    },
+    "static_cache": {
+      "is_symlink": false,
+      "sha256": "169fa816bdef687e51048647bf22010a6faa5adef05e7699eed7c8ebb9dd601a"
+    }
+  },
+  "inputs_unchanged": true,
+  "invalid_destinations_either_backend": 363,
+  "metric_inclusion_rule": "accessibility: all decisions including invalid destinations; trip distance: finite tc/th pairs only, regardless of destination IDs",
+  "nonfinite_trip_pairs_excluded": 0,
+  "packages": {
+    "h3": "4.5.0",
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "scikit-learn": "1.9.0",
+    "scipy": "1.18.1"
+  },
+  "python": "3.13.3",
+  "reason": "all pre-registered checks passed",
+  "scientific_checks_passed": true,
+  "started_unix": 1791759428.1430578,
+  "status": "PASS",
+  "trip_distance": {
+    "finite_pairs": 50000,
+    "n": 50000,
+    "nmae": 0.19321692430710397,
+    "pearson": 0.8964391356427692
+  },
+  "worktree_clean_after": true,
+  "worktree_status_after": "",
+  "worktree_status_before": ""
+}

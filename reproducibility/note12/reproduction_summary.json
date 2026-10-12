@@ -1,0 +1,88 @@
+{
+  "certified_commit": "a63ee7f766e1b7dc1e71c8fb71024c6d62161df7",
+  "cities": {
+    "cambridge_ma": {
+      "accessibility": {
+        "finite_pairs": 50000,
+        "n": 50000,
+        "nmae": 0.06788120632246836,
+        "pearson": 0.9795823162298019
+      },
+      "decisions_per_round": 50000,
+      "destination_sequence_sha256": "97e4df51ea1fbd69b6bdf00ef3aecaaf3507363459c6efebdf77b757741aa44b",
+      "fresh_status": "PASS",
+      "historical_status": "PASS",
+      "invalid_destinations_either_backend": 8,
+      "packages": {
+        "h3": "4.5.0",
+        "numpy": "2.5.2",
+        "pandas": "3.0.5",
+        "scikit-learn": "1.9.0",
+        "scipy": "1.18.1"
+      },
+      "python": "3.13.3",
+      "trip_distance": {
+        "finite_pairs": 50000,
+        "n": 50000,
+        "nmae": 0.2671754925373839,
+        "pearson": 0.8264533644962385
+      }
+    },
+    "madrid": {
+      "accessibility": {
+        "finite_pairs": 50000,
+        "n": 50000,
+        "nmae": 0.07282152575037316,
+        "pearson": 0.9904512169837562
+      },
+      "decisions_per_round": 50000,
+      "destination_sequence_sha256": "7113301ddfcb9ccf3d9db0b19cc17df9ca8aa253c50632d54f1ce5737b378a78",
+      "fresh_status": "PASS",
+      "historical_status": "PASS",
+      "invalid_destinations_either_backend": 24,
+      "packages": {
+        "h3": "4.5.0",
+        "numpy": "2.5.2",
+        "pandas": "3.0.5",
+        "scikit-learn": "1.9.0",
+        "scipy": "1.18.1"
+      },
+      "python": "3.13.3",
+      "trip_distance": {
+        "finite_pairs": 50000,
+        "n": 50000,
+        "nmae": 0.22621628607289887,
+        "pearson": 0.8833545314302245
+      }
+    },
+    "new_york_ny": {
+      "accessibility": {
+        "finite_pairs": 50000,
+        "n": 50000,
+        "nmae": 0.07369979755371424,
+        "pearson": 0.9916804390272893
+      },
+      "decisions_per_round": 50000,
+      "destination_sequence_sha256": "e7bc8ceed6a5099f2b0ce8c6efc9f31ae7390d1328b14e4f2d07081b26534055",
+      "fresh_status": "PASS",
+      "historical_status": "PASS",
+      "invalid_destinations_either_backend": 363,
+      "packages": {
+        "h3": "4.5.0",
+        "numpy": "2.5.2",
+        "pandas": "3.0.5",
+        "scikit-learn": "1.9.0",
+        "scipy": "1.18.1"
+      },
+      "python": "3.13.3",
+      "trip_distance": {
+        "finite_pairs": 50000,
+        "n": 50000,
+        "nmae": 0.19321692430710397,
+        "pearson": 0.8964391356427692
+      }
+    }
+  },
+  "protocol": "R12-C14-F",
+  "scope": "Same-machine reproduction in a rebuilt Python environment"
+}

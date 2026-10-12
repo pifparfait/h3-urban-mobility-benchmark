@@ -1,0 +1,70 @@
+{
+  "accessibility": {
+    "finite_pairs": 50000,
+    "n": 50000,
+    "nmae": 0.07282152575037316,
+    "pearson": 0.9904512169837562
+  },
+  "capture_sha256": "eeac57878b01f2b98b21c22eb88815e23dd18109378fcce1569beb85eb1ed330",
+  "city": "madrid",
+  "commit_expected": "a63ee7f766e1b7dc1e71c8fb71024c6d62161df7",
+  "decisions": 50000,
+  "destination_sequence_sha256": "7113301ddfcb9ccf3d9db0b19cc17df9ca8aa253c50632d54f1ce5737b378a78",
+  "finished_unix": 1791761314.426574,
+  "historical_destination_sequence_sha256": "7113301ddfcb9ccf3d9db0b19cc17df9ca8aa253c50632d54f1ce5737b378a78",
+  "historical_endpoints_sha256": "5b91e028b64c7e74f2e2208f271762c185a1c4291be36c7bda431d200415259c",
+  "historical_summary_sha256": "f4304b9322f0caf5fcfabfc9b3282b169f6feb7245dd697738cc4597a9724893",
+  "inputs_after": {
+    "poi": {
+      "is_symlink": false,
+      "sha256": "c82cba21063d6503a9edc5099c37d6fc8f0f2877576679f0c8c49091635c8456"
+    },
+    "population": {
+      "is_symlink": false,
+      "sha256": "fbea2b87af334aa7d780533051c967b0036ba5c8fcdcbc9fa6fdc18da80e19ed"
+    },
+    "static_cache": {
+      "is_symlink": false,
+      "sha256": "c11fca031fd4d4d6a4440532c3178d3812eea064596e038604bd747acaa20d94"
+    }
+  },
+  "inputs_before": {
+    "poi": {
+      "is_symlink": false,
+      "sha256": "c82cba21063d6503a9edc5099c37d6fc8f0f2877576679f0c8c49091635c8456"
+    },
+    "population": {
+      "is_symlink": false,
+      "sha256": "fbea2b87af334aa7d780533051c967b0036ba5c8fcdcbc9fa6fdc18da80e19ed"
+    },
+    "static_cache": {
+      "is_symlink": false,
+      "sha256": "c11fca031fd4d4d6a4440532c3178d3812eea064596e038604bd747acaa20d94"
+    }
+  },
+  "inputs_unchanged": true,
+  "invalid_destinations_either_backend": 24,
+  "metric_inclusion_rule": "accessibility: all decisions including invalid destinations; trip distance: finite tc/th pairs only, regardless of destination IDs",
+  "nonfinite_trip_pairs_excluded": 0,
+  "packages": {
+    "h3": "4.5.0",
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "scikit-learn": "1.9.0",
+    "scipy": "1.18.1"
+  },
+  "python": "3.13.3",
+  "reason": "all pre-registered checks passed",
+  "scientific_checks_passed": true,
+  "started_unix": 1791761300.3402612,
+  "status": "PASS",
+  "trip_distance": {
+    "finite_pairs": 50000,
+    "n": 50000,
+    "nmae": 0.22621628607289887,
+    "pearson": 0.8833545314302245
+  },
+  "worktree_clean_after": true,
+  "worktree_status_after": "",
+  "worktree_status_before": ""
+}
