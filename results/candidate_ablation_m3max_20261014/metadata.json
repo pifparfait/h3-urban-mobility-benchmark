@@ -1,0 +1,104 @@
+{
+  "timestamp_utc": "2026-10-14T10:17:05.582960+00:00",
+  "git_commit": "09b46ff25f18bcf66934beaa24f3faa856c2374f",
+  "git_dirty": false,
+  "os": "macOS-26.1-arm64-arm-64bit-Mach-O",
+  "cpu_model": "arm",
+  "logical_cores": 14,
+  "physical_cores": 14,
+  "ram_bytes": 38654705664,
+  "python": "3.13.3 (main, Apr  8 2025, 13:54:08) [Clang 17.0.0 (clang-1700.0.13.3)]",
+  "versions": {
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.0",
+    "h3": "4.5.0",
+    "matplotlib": "3.11.1",
+    "geopandas": "1.1.4",
+    "shapely": "2.1.2",
+    "rasterio": "1.5.1"
+  },
+  "threads": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1"
+  },
+  "seed": 42,
+  "agents": 10000,
+  "repeats": 5,
+  "workloads": [
+    100000,
+    1000000
+  ],
+  "requested_cities": [
+    "cambridge_ma"
+  ],
+  "available_cities": [
+    "cambridge_ma"
+  ],
+  "missing_inputs": {},
+  "scope": "independent complete decisions; no routing or movement",
+  "query_seed_offset": 7001,
+  "diagnostic_queries": 10000,
+  "world_cambridge_ma": {
+    "agent_sampling_mode": "worldpop_h3_weighted",
+    "population_source_path": "data/cambridge_ma/processed/cambridge_population_h3_r9.csv",
+    "population_cells_used": 175,
+    "population_total_weight": 103855.02128586173,
+    "population_h3_resolution_min": 9,
+    "population_h3_resolution_max": 9,
+    "sampled_unique_population_cells": 168,
+    "city_name": "cambridge_ma",
+    "n_real_osm_pois": 2102,
+    "active_layer_codes": [
+      "D14",
+      "D15",
+      "D16",
+      "D17",
+      "D18",
+      "D19",
+      "D20",
+      "D21",
+      "D22",
+      "D23",
+      "D24",
+      "D25",
+      "D3",
+      "D4",
+      "D5",
+      "D7",
+      "D8",
+      "D9"
+    ],
+    "behavior_model": "controlled_synthetic_profiles_and_schedules",
+    "profile_counts": {
+      "0": 4915,
+      "1": 1987,
+      "2": 1595,
+      "3": 1503
+    },
+    "schedule_layer_resolution": {
+      "home": "HOME/NO_QUERY",
+      "work": "D4",
+      "education": "D5",
+      "lunch": "D21",
+      "shopping": "D15",
+      "health": "D8",
+      "leisure": "D25",
+      "cafe": "D22",
+      "daycare": "D19"
+    }
+  },
+  "inputs_cambridge_ma": {
+    "data/cambridge_ma/processed/cambridge_osm_pois.csv": {
+      "bytes": 600056,
+      "sha256": "61771283426a001e3659eba3dd5829505451c9809c247504d9913cad7e2ca957"
+    },
+    "data/cambridge_ma/processed/cambridge_population_h3_r9.csv": {
+      "bytes": 12501,
+      "sha256": "e8246e8591d49e589bce71326321f1cfc45bc5c147eb64de803380a5f2f5dbca"
+    }
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "execution_metadata": {
+    "agents": 10000,
+    "available_cities": [
+      "cambridge_ma"
+    ],
+    "cpu_model": "arm",
+    "diagnostic_queries": 10000,
+    "git_commit": "09b46ff25f18bcf66934beaa24f3faa856c2374f",
+    "git_dirty": false,
+    "inputs_cambridge_ma": {
+      "data/cambridge_ma/processed/cambridge_osm_pois.csv": {
+        "bytes": 600056,
+        "sha256": "61771283426a001e3659eba3dd5829505451c9809c247504d9913cad7e2ca957"
+      },
+      "data/cambridge_ma/processed/cambridge_population_h3_r9.csv": {
+        "bytes": 12501,
+        "sha256": "e8246e8591d49e589bce71326321f1cfc45bc5c147eb64de803380a5f2f5dbca"
+      }
+    },
+    "logical_cores": 14,
+    "missing_inputs": {},
+    "os": "macOS-26.1-arm64-arm-64bit-Mach-O",
+    "physical_cores": 14,
+    "python": "3.13.3 (main, Apr  8 2025, 13:54:08) [Clang 17.0.0 (clang-1700.0.13.3)]",
+    "query_seed_offset": 7001,
+    "ram_bytes": 38654705664,
+    "repeats": 5,
+    "requested_cities": [
+      "cambridge_ma"
+    ],
+    "scope": "independent complete decisions; no routing or movement",
+    "seed": 42,
+    "threads": {
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "timestamp_utc": "2026-10-14T10:17:05.582960+00:00",
+    "versions": {
+      "geopandas": "1.1.4",
+      "h3": "4.5.0",
+      "matplotlib": "3.11.1",
+      "numpy": "2.5.2",
+      "pandas": "3.0.5",
+      "rasterio": "1.5.1",
+      "scipy": "1.18.1",
+      "shapely": "2.1.2",
+      "sklearn": "1.9.0"
+    },
+    "workloads": [
+      100000,
+      1000000
+    ],
+    "world_cambridge_ma": {
+      "active_layer_codes": [
+        "D14",
+        "D15",
+        "D16",
+        "D17",
+        "D18",
+        "D19",
+        "D20",
+        "D21",
+        "D22",
+        "D23",
+        "D24",
+        "D25",
+        "D3",
+        "D4",
+        "D5",
+        "D7",
+        "D8",
+        "D9"
+      ],
+      "agent_sampling_mode": "worldpop_h3_weighted",
+      "behavior_model": "controlled_synthetic_profiles_and_schedules",
+      "city_name": "cambridge_ma",
+      "n_real_osm_pois": 2102,
+      "population_cells_used": 175,
+      "population_h3_resolution_max": 9,
+      "population_h3_resolution_min": 9,
+      "population_source_path": "data/cambridge_ma/processed/cambridge_population_h3_r9.csv",
+      "population_total_weight": 103855.02128586173,
+      "profile_counts": {
+        "0": 4915,
+        "1": 1987,
+        "2": 1595,
+        "3": 1503
+      },
+      "sampled_unique_population_cells": 168,
+      "schedule_layer_resolution": {
+        "cafe": "D22",
+        "daycare": "D19",
+        "education": "D5",
+        "health": "D8",
+        "home": "HOME/NO_QUERY",
+        "leisure": "D25",
+        "lunch": "D21",
+        "shopping": "D15",
+        "work": "D4"
+      }
+    }
+  },
+  "experiment": "Cambridge candidate architecture ablation",
+  "hardware": {
+    "architecture": "arm64",
+    "chip": "Apple M3 Max",
+    "cpu_cores": 14,
+    "memory_gb": 36,
+    "operating_system": "macOS-26.1-arm64-arm-64bit-Mach-O"
+  },
+  "input_sha256": {
+    "data/cambridge_ma/processed/cambridge_osm_pois.csv": "61771283426a001e3659eba3dd5829505451c9809c247504d9913cad7e2ca957",
+    "data/cambridge_ma/processed/cambridge_population_h3_r9.csv": "e8246e8591d49e589bce71326321f1cfc45bc5c147eb64de803380a5f2f5dbca"
+  },
+  "manifest_created_utc": "2026-10-14T10:43:51.691841+00:00",
+  "platform_label": "Apple M3 Max",
+  "provenance_note": "Native Apple Silicon execution. Intel results were produced using a historically dirty worktree with separately recorded source hashes. Identical input data do not establish identical source-code provenance across platforms.",
+  "result_sha256": {
+    "candidate_counts_raw.csv": "438a49a1acf530f1d36bec7e177eec1507fb59d311549035ddb75cedd593c85b",
+    "candidate_counts_summary.csv": "6e4a3f02cb3a33f68983b814621be23fd1f0e92579521d79a376d913aa34db10",
+    "component_timing.csv": "314b8581b47408774e4a224c32f608a2b6a021fd7365c45f8ae0e995356821b8",
+    "fidelity_summary.csv": "7965e0289066f12601d82182cea937cc6221e9745d41cded587943682c912984",
+    "figures/cambridge_ma_candidates.png": "9ee078fde529a2b600c35fcb52d37cd428fb7e0731ed226950c3bfd0c69bff7f",
+    "figures/cambridge_ma_candidates.svg": "205b5108837622004599fb3681fc4f74e7a431d43cc7201f684aef6989ec60ea",
+    "figures/cambridge_ma_frontier.png": "eaa84fdb5b71a9a128b9cebcbdf45ff81d8eb9667202c3e7eedd08331857965b",
+    "figures/cambridge_ma_frontier.svg": "57c79db7c9a9dbe3212a8dbf7193fb8e49fc5feb9454594af71c1cbdce157aa0",
+    "figures/cambridge_ma_latency.png": "dc0c0605404bed9895c0888536d4e283fbfdac2cbac27946d26bcc370f15c15c",
+    "figures/cambridge_ma_latency.svg": "8100db5eae8fedf6b64de8919235cff720f8bf639f809a8dce44111c04467590",
+    "figures/cambridge_ma_speedup.png": "88ae14ee42201600304b472774e9973aafce15037065a58c1a070c2053d1377b",
+    "figures/cambridge_ma_speedup.svg": "5abc9ea0763be1093417a14a48cb868940fee4012124637feb157bd7aa5f37d2",
+    "metadata.json": "5074668ba581dd39260d9b4fbf37b938542ad2843bad57cce3a35319b98ffad9",
+    "report.md": "df7a1d538d8374c6a95bc5fdca8c2c3ae5450def1940fff72ed723c7eeab9b72",
+    "timings_raw.csv": "60afca83fdd7c0c30c357da7a44671b5f731f7123cabc1961b8731c36931e705",
+    "timings_summary.csv": "8bf0d3c042b8b5a9b640fdb308005c06cf1881e5586f4443e3cb1535534a92e0"
+  },
+  "source_commit": "09b46ff25f18bcf66934beaa24f3faa856c2374f",
+  "source_sha256": {
+    "experiments/08_candidate_ablation.py": "8c89bb3371b36a556bf5f328816d66effa64c797cc67cb521f728b91c2caedfc",
+    "src/h3uab/benchmarking.py": "3aac0dfd2361a46ed602311c97b1d776112d4c1b9adfc3adb90d832c9b753857",
+    "src/h3uab/config.py": "ea95769c96870fc84172b3392b00746e690f1a94ef9bfaa8e4d731e24ccc9656",
+    "src/h3uab/continuous_indexed_backend.py": "58a462543c33921af65f0b35b350ba5922c9bcef9ac9ea773880487ec7b6f594",
+    "src/h3uab/h3_backend.py": "342e1100eb1e3f652898c20388fe1e32b924369ec44b255afa03814224cf9eb1",
+    "src/h3uab/static_city.py": "b4bb1e9e42c4872cc462924994cf72f057cdd4476d1ae9202467c93c713bdafd"
+  }
+}
